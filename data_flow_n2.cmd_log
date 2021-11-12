@@ -4,3 +4,4 @@ xst -intstyle ise -ifn "/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.xst
 xst -intstyle ise -ifn "/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.xst" -ofn "/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.syr" 
 xst -intstyle ise -ifn "/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.xst" -ofn "/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.syr" 
 xst -intstyle ise -ifn "/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.xst" -ofn "/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.syr" 
+vhdtdtfi -prj digital_watch_n2 -o /home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhi -module data_flow_n2 -template /opt/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work two_bits_regs.vhd -lib work regs.vhd -lib work conversor_bin_to_hex.vhd -lib work clk_division.vhd -lib work data_flow_n2.vhd 

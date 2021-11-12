@@ -1,0 +1,1 @@
+vhdtdtfi -prj digital_watch_n2 -o /home/ise/ISE_Projects/digital_watch_n2/control_unit_n2.vhi -module control_unit_n2 -template /opt/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work control_unit_n2.vhd 

@@ -1,0 +1,7 @@
+vhdl work "two_bits_regs.vhd"
+vhdl work "regs.vhd"
+vhdl work "conversor_bin_to_hex.vhd"
+vhdl work "clk_division.vhd"
+vhdl work "data_flow_n2.vhd"
+vhdl work "control_unit_n2.vhd"
+vhdl work "digital_system_n2.vhd"
