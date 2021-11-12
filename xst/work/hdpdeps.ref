@@ -1,4 +1,4 @@
-V3 19
+V3 22
 FL /home/ise/ISE_Projects/digital_watch_n2/clk_division.vhd 2021/11/12.03:22:16 P.20131013
 EN work/clk_division 1636691631 \
       FL /home/ise/ISE_Projects/digital_watch_n2/clk_division.vhd \
@@ -6,6 +6,13 @@ EN work/clk_division 1636691631 \
 AR work/clk_division/Behavioral 1636691632 \
       FL /home/ise/ISE_Projects/digital_watch_n2/clk_division.vhd \
       EN work/clk_division 1636691631
+FL /home/ise/ISE_Projects/digital_watch_n2/control_unit_n2.vhd 2021/11/12.17:13:05 P.20131013
+EN work/control_unit_n2 1636737188 \
+      FL /home/ise/ISE_Projects/digital_watch_n2/control_unit_n2.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/control_unit_n2/Behavioral 1636737189 \
+      FL /home/ise/ISE_Projects/digital_watch_n2/control_unit_n2.vhd \
+      EN work/control_unit_n2 1636737188
 FL /home/ise/ISE_Projects/digital_watch_n2/conversor_bin_to_hex.vhd 2021/11/11.01:26:54 P.20131013
 EN work/conversor_bin_to_hex 1636691637 \
       FL /home/ise/ISE_Projects/digital_watch_n2/conversor_bin_to_hex.vhd \

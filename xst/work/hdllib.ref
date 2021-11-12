@@ -1,7 +1,9 @@
 AR conversor_bin_to_hex behavioral /home/ise/ISE_Projects/digital_watch_n2/conversor_bin_to_hex.vhd sub00/vhpl03 1636691638
+EN control_unit_n2 NULL /home/ise/ISE_Projects/digital_watch_n2/control_unit_n2.vhd sub00/vhpl12 1636737188
 EN regs NULL /home/ise/ISE_Projects/digital_watch_n2/regs.vhd sub00/vhpl08 1636689085
 AR two_bits_regs behavioral /home/ise/ISE_Projects/digital_watch_n2/two_bits_regs.vhd sub00/vhpl07 1636691634
 AR clk_division behavioral /home/ise/ISE_Projects/digital_watch_n2/clk_division.vhd sub00/vhpl05 1636691632
+AR control_unit_n2 behavioral /home/ise/ISE_Projects/digital_watch_n2/control_unit_n2.vhd sub00/vhpl13 1636737189
 EN clk_division NULL /home/ise/ISE_Projects/digital_watch_n2/clk_division.vhd sub00/vhpl04 1636691631
 AR data_flow_n2 behavioral /home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd sub00/vhpl01 1636691640
 EN four_bits_regs NULL /home/ise/ISE_Projects/digital_watch_n2/regs.vhd sub00/vhpl10 1636691635

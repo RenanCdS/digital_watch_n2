@@ -117,12 +117,16 @@ begin
 --	process (clk) begin
 --		if (counter_display = 0)
 --			display <= "0111";
+--			saida <= saida_H1;
 --		elsif (counter_display = 1)
 --			display <= "1011";
+--			saida <= saida_H0;
 --		elsif (counter_display = 2)
 --			display <= "1101";
+--			saida <= saida_M1;
 --		elsif (counter_display = 3)
 --			display <= "1110";
+--			saida <= saida_M0;
 --		end if;
 --		end if;
 --		end if;
