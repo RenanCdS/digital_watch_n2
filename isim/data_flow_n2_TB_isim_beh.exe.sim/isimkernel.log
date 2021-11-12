@@ -1,0 +1,28 @@
+Command line:
+   data_flow_n2_TB_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  47255
+
+Fri Nov 12 04:36:23 2021
+
+
+ Elaboration Time: 0.06 sec
+
+ Current Memory Usage: 198.832 Meg
+
+ Total Signals          : 71
+ Total Nets             : 115
+ Total Signal Drivers   : 26
+ Total Blocks           : 15
+ Total Primitive Blocks : 13
+ Total Processes        : 21
+ Total Traceable Variables  : 16
+ Total Scalar Nets and Variables : 617
+
+ Total Simulation Time: 1.4 sec
+
+ Current Memory Usage: 276.431 Meg
+
+Fri Nov 12 04:38:38 2021
+

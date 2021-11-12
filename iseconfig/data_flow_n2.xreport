@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2021-11-09T03:19:10</DateModified>
+  <DateModified>2021-11-12T03:19:46</DateModified>
   <ModuleName>data_flow_n2</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
   <SavedFilePath>/home/ise/ISE_Projects/digital_watch_n2/iseconfig/data_flow_n2.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/ise/ISE_Projects/digital_watch_n2</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>/home/ise/ISE_Projects/digital_watch_n2/</ImplementationReportsDirectory>
   <DateInitialized>2021-11-09T03:19:10</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

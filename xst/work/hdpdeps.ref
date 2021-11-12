@@ -1,9 +1,35 @@
-V3 3
-FL /home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd 2021/11/09.03:24:09 P.20131013
-EN work/data_flow_n2 1636428254 \
+V3 19
+FL /home/ise/ISE_Projects/digital_watch_n2/clk_division.vhd 2021/11/12.03:22:16 P.20131013
+EN work/clk_division 1636691631 \
+      FL /home/ise/ISE_Projects/digital_watch_n2/clk_division.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/clk_division/Behavioral 1636691632 \
+      FL /home/ise/ISE_Projects/digital_watch_n2/clk_division.vhd \
+      EN work/clk_division 1636691631
+FL /home/ise/ISE_Projects/digital_watch_n2/conversor_bin_to_hex.vhd 2021/11/11.01:26:54 P.20131013
+EN work/conversor_bin_to_hex 1636691637 \
+      FL /home/ise/ISE_Projects/digital_watch_n2/conversor_bin_to_hex.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/conversor_bin_to_hex/Behavioral 1636691638 \
+      FL /home/ise/ISE_Projects/digital_watch_n2/conversor_bin_to_hex.vhd \
+      EN work/conversor_bin_to_hex 1636691637
+FL /home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd 2021/11/12.04:33:43 P.20131013
+EN work/data_flow_n2 1636691639 \
       FL /home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd \
-      PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
-      PB ieee/STD_LOGIC_UNSIGNED 1381692179
-AR work/data_flow_n2/Behavioral 1636428255 \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
+AR work/data_flow_n2/Behavioral 1636691640 \
       FL /home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd \
-      EN work/data_flow_n2 1636428254
+      EN work/data_flow_n2 1636691639 CP clk_division CP two_bits_regs \
+      CP four_bits_regs CP conversor_bin_to_hex
+FL /home/ise/ISE_Projects/digital_watch_n2/regs.vhd 2021/11/12.03:52:08 P.20131013
+EN work/four_bits_regs 1636691635 \
+      FL /home/ise/ISE_Projects/digital_watch_n2/regs.vhd PB ieee/std_logic_1164 1381692176
+AR work/four_bits_regs/Behavioral 1636691636 \
+      FL /home/ise/ISE_Projects/digital_watch_n2/regs.vhd EN work/four_bits_regs 1636691635
+FL /home/ise/ISE_Projects/digital_watch_n2/two_bits_regs.vhd 2021/11/12.03:50:20 P.20131013
+EN work/two_bits_regs 1636691633 \
+      FL /home/ise/ISE_Projects/digital_watch_n2/two_bits_regs.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/two_bits_regs/Behavioral 1636691634 \
+      FL /home/ise/ISE_Projects/digital_watch_n2/two_bits_regs.vhd \
+      EN work/two_bits_regs 1636691633

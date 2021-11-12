@@ -1,0 +1,5 @@
+set -tmpdir "/home/ise/ISE_Projects/digital_watch_n2/xst/projnav.tmp"
+set -xsthdpdir "/home/ise/ISE_Projects/digital_watch_n2/xst"
+elaborate
+-ifn conversor_bin_to_hex.prj
+-ifmt mixed

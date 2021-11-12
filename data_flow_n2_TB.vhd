@@ -1,6 +1,9 @@
-
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
+ 
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--USE ieee.numeric_std.ALL;
  
 ENTITY data_flow_n2_TB IS
 END data_flow_n2_TB;
@@ -11,52 +14,82 @@ ARCHITECTURE behavior OF data_flow_n2_TB IS
  
     COMPONENT data_flow_n2
     PORT(
-         CLK_IN : IN  std_logic;
-         MINUTES : OUT  std_logic_vector(5 downto 0);
-         HOURS : OUT  std_logic_vector(4 downto 0)
+         clk : IN  std_logic;
+         rst_n : IN  std_logic;
+         Data : IN  std_logic_vector(3 downto 0);
+         Enable_H_in1 : IN  std_logic;
+         Enable_H_in0 : IN  std_logic;
+         Enable_M_in1 : IN  std_logic;
+         Enable_M_in0 : IN  std_logic;
+         Clear : IN  std_logic;
+         H_out1 : OUT  std_logic_vector(6 downto 0);
+         H_out0 : OUT  std_logic_vector(6 downto 0);
+         M_out1 : OUT  std_logic_vector(6 downto 0);
+         M_out0 : OUT  std_logic_vector(6 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
-   signal CLK_IN : std_logic := '0';
+   signal clk : std_logic := '0';
+   signal rst_n : std_logic := '0';
+   signal Data : std_logic_vector(3 downto 0) := (others => '0');
+   signal Enable_H_in1 : std_logic := '0';
+   signal Enable_H_in0 : std_logic := '0';
+   signal Enable_M_in1 : std_logic := '0';
+   signal Enable_M_in0 : std_logic := '0';
+   signal Clear : std_logic := '0';
 
  	--Outputs
-   signal MINUTES : std_logic_vector(5 downto 0);
-   signal HOURS : std_logic_vector(4 downto 0);
+   signal H_out1 : std_logic_vector(6 downto 0);
+   signal H_out0 : std_logic_vector(6 downto 0);
+   signal M_out1 : std_logic_vector(6 downto 0);
+   signal M_out0 : std_logic_vector(6 downto 0);
 
    -- Clock period definitions
-   constant CLK_IN_period : time := 10 ns;
+   constant clk_period : time := 10 ps;
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: data_flow_n2 PORT MAP (
-          CLK_IN => CLK_IN,
-          MINUTES => MINUTES,
-          HOURS => HOURS
+          clk => clk,
+          rst_n => rst_n,
+          Data => Data,
+          Enable_H_in1 => Enable_H_in1,
+          Enable_H_in0 => Enable_H_in0,
+          Enable_M_in1 => Enable_M_in1,
+          Enable_M_in0 => Enable_M_in0,
+          Clear => Clear,
+          H_out1 => H_out1,
+          H_out0 => H_out0,
+          M_out1 => M_out1,
+          M_out0 => M_out0
         );
 
    -- Clock process definitions
-   CLK_IN_process :process
+   clk_process :process
    begin
-		CLK_IN <= '0';
-		wait for CLK_IN_period/2;
-		CLK_IN <= '1';
-		wait for CLK_IN_period/2;
+		clk <= '0';
+		wait for clk_period/2;
+		clk <= '1';
+		wait for clk_period/2;
    end process;
  
 
    -- Stimulus process
    stim_proc: process
    begin		
-      -- hold reset state for 100 ns.
-      wait for 100 ns;	
-
-      wait for CLK_IN_period*10;
-
-      -- insert stimulus here 
-
+		rst_n <= '0';
+      wait for 100 ns;
+		Enable_H_in0 <= '1';
+		Data <= "0100";
+      wait for clk_period*10;
+		Enable_H_in0 <= '0';
+		rst_n <= '1';
+      wait for 300 ns;
+		rst_n <= '0';
+		Clear <= '1';
       wait;
    end process;
 

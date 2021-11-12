@@ -1,0 +1,2 @@
+vhdtdtfi -prj digital_watch_n2 -o /home/ise/ISE_Projects/digital_watch_n2/two_bits_regs.vhi -module two_bits_regs -template /opt/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work two_bits_regs.vhd 
+vhdtdtfi -prj digital_watch_n2 -o /home/ise/ISE_Projects/digital_watch_n2/two_bits_regs.vhi -module two_bits_regs -template /opt/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work two_bits_regs.vhd 

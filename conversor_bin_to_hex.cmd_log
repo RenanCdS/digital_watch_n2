@@ -1,0 +1,2 @@
+vhdtdtfi -prj digital_watch_n2 -o /home/ise/ISE_Projects/digital_watch_n2/conversor_bin_to_hex.vhi -module conversor_bin_to_hex -template /opt/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work conversor_bin_to_hex.vhd 
+vhdtdtfi -prj digital_watch_n2 -o /home/ise/ISE_Projects/digital_watch_n2/conversor_bin_to_hex.vhi -module conversor_bin_to_hex -template /opt/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work conversor_bin_to_hex.vhd 
