@@ -14,8 +14,8 @@ entity digital_system_n2 is
            BTN_H0 : in  STD_LOGIC;
            BTN_M1 : in  STD_LOGIC;
            BTN_M0 : in  STD_LOGIC;
-			  DISPLAY_SEGMENTS_OUT: out STD_LOGIC_VECTOR (6 downto 0);
-			  SEVEN_SEGMENTS_DISPLAYS_CONTROL : out STD_LOGIC_VECTOR(3 downto 0)
+			  SEVEN_SEGMENTS_DISPLAY: out STD_LOGIC_VECTOR (6 downto 0);
+			  ANODES : out STD_LOGIC_VECTOR(3 downto 0)
 			 );
 end digital_system_n2;
 
@@ -31,10 +31,8 @@ architecture Behavioral of digital_system_n2 is
 		Enable_M_in1 : IN std_logic;
 		Enable_M_in0 : IN std_logic;
 		Clear : IN std_logic;          
-		H_out1 : OUT std_logic_vector(6 downto 0);
-		H_out0 : OUT std_logic_vector(6 downto 0);
-		M_out1 : OUT std_logic_vector(6 downto 0);
-		M_out0 : OUT std_logic_vector(6 downto 0)
+		Seven_segments_display: out std_logic_vector(6 downto 0);
+		Anodes: out std_logic_vector(3 downto 0)
 		);
 	END COMPONENT;
 	
@@ -57,31 +55,8 @@ architecture Behavioral of digital_system_n2 is
 		);
 	END COMPONENT;
 	
-	signal H1_out_signal, H0_out_signal, M1_out_signal, M0_out_signal : STD_LOGIC_VECTOR (6 downto 0);
-	signal counter_display : integer;
 	signal ENH1_Enable_H_in1, ENH0_Enable_H_in0, ENM1_Enable_M_in1, ENM0_Enable_M_in0, Clear_UC_Clear_DF, RST_WATCH_UC_RST_WATCH_DF : STD_LOGIC;
 begin
-
-	-- processo usado para realizar a alteranancia dos displays que contem o horario
-	process (CLK_UC) begin
-		if (counter_display = 0) then
-			SEVEN_SEGMENTS_DISPLAYS_CONTROL <= "0111";
-			DISPLAY_SEGMENTS_OUT <= H1_out_signal;
-			counter_display <= counter_display + 1;
-		elsif (counter_display = 1) then
-			SEVEN_SEGMENTS_DISPLAYS_CONTROL <= "1011";
-			DISPLAY_SEGMENTS_OUT <= H0_out_signal;
-			counter_display <= counter_display + 1;
-		elsif (counter_display = 2) then
-			SEVEN_SEGMENTS_DISPLAYS_CONTROL <= "1101";
-			DISPLAY_SEGMENTS_OUT <= M1_out_signal;
-			counter_display <= counter_display + 1;
-		else
-			SEVEN_SEGMENTS_DISPLAYS_CONTROL <= "1110";
-			DISPLAY_SEGMENTS_OUT <= M0_out_signal;
-			counter_display <= 0;
-		end if;
-	end process;
 
 	data_flow: data_flow_n2 PORT MAP(
 		clk => CLK_UC,
@@ -92,10 +67,8 @@ begin
 		Enable_M_in1 => ENM1_Enable_M_in1,
 		Enable_M_in0 => ENM0_Enable_M_in0,
 		Clear => Clear_UC_Clear_DF,
-		H_out1 => H1_out_signal,
-		H_out0 => H0_out_signal,
-		M_out1 => M1_out_signal,
-		M_out0 => M0_out_signal
+		Seven_segments_display => SEVEN_SEGMENTS_DISPLAY,
+		Anodes => ANODES
 	);
 	
 	control_unit: control_unit_n2 PORT MAP(

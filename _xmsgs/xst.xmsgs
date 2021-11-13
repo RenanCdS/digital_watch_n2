@@ -5,8 +5,14 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="Xst" num="819" delta="new" >&quot;<arg fmt="%s" index="1">/home/ise/ISE_Projects/digital_watch_n2/digital_system_n2.vhd</arg>&quot; line <arg fmt="%d" index="2">66</arg>: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
-<arg fmt="%s" index="3">&lt;counter_display&gt;, &lt;H1_out_signal&gt;, &lt;H0_out_signal&gt;, &lt;M1_out_signal&gt;, &lt;M0_out_signal&gt;</arg>
+<msg type="warning" file="HDLParsers" num="3530" delta="old" >Time stamp of file &quot;<arg fmt="%s" index="1">/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd</arg>&quot; is newer than current system time.
+</msg>
+
+<msg type="warning" file="HDLParsers" num="3530" delta="old" >Time stamp of file &quot;<arg fmt="%s" index="1">/home/ise/ISE_Projects/digital_watch_n2/digital_system_n2.vhd</arg>&quot; is newer than current system time.
+</msg>
+
+<msg type="warning" file="Xst" num="819" delta="new" >&quot;<arg fmt="%s" index="1">/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd</arg>&quot; line <arg fmt="%d" index="2">74</arg>: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+<arg fmt="%s" index="3">&lt;anodes_count&gt;, &lt;H1_out_signal&gt;, &lt;H0_out_signal&gt;, &lt;M1_out_signal&gt;, &lt;M0_out_signal&gt;</arg>
 </msg>
 
 <msg type="info" file="Xst" num="2679" delta="old" >Register &lt;<arg fmt="%s" index="1">RST_WATCH_OUT</arg>&gt; in unit &lt;<arg fmt="%s" index="2">control_unit_n2</arg>&gt; has a constant value of <arg fmt="%s" index="3">1</arg> during circuit operation. The register is replaced by logic.
@@ -42,26 +48,35 @@
 <msg type="info" file="Xst" num="2371" delta="old" >HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
 </msg>
 
-<msg type="warning" file="Xst" num="643" delta="old" >&quot;<arg fmt="%s" index="1">/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd</arg>&quot; line <arg fmt="%d" index="2">139</arg>: The result of a <arg fmt="%d" index="3">2</arg>x<arg fmt="%d" index="4">4</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">5</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">anodes_count</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">00</arg>.
 </msg>
 
-<msg type="warning" file="Xst" num="643" delta="old" >&quot;<arg fmt="%s" index="1">/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd</arg>&quot; line <arg fmt="%d" index="2">177</arg>: The result of a <arg fmt="%d" index="3">4</arg>x<arg fmt="%d" index="4">4</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">4</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+<msg type="warning" file="Xst" num="643" delta="new" >&quot;<arg fmt="%s" index="1">/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd</arg>&quot; line <arg fmt="%d" index="2">132</arg>: The result of a <arg fmt="%d" index="3">2</arg>x<arg fmt="%d" index="4">4</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">5</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
 </msg>
 
-<msg type="warning" file="Xst" num="643" delta="old" >&quot;<arg fmt="%s" index="1">/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd</arg>&quot; line <arg fmt="%d" index="2">164</arg>: The result of a <arg fmt="%d" index="3">4</arg>x<arg fmt="%d" index="4">4</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">4</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+<msg type="warning" file="Xst" num="643" delta="new" >&quot;<arg fmt="%s" index="1">/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd</arg>&quot; line <arg fmt="%d" index="2">170</arg>: The result of a <arg fmt="%d" index="3">4</arg>x<arg fmt="%d" index="4">4</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">4</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+</msg>
+
+<msg type="warning" file="Xst" num="643" delta="new" >&quot;<arg fmt="%s" index="1">/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd</arg>&quot; line <arg fmt="%d" index="2">157</arg>: The result of a <arg fmt="%d" index="3">4</arg>x<arg fmt="%d" index="4">4</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">4</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
 </msg>
 
 <msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">RST_WATCH_UC_RST_WATCH_DF</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1290" delta="old" >Hierarchical block &lt;<arg fmt="%s" index="1">convert_hex_M_out1</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">data_flow</arg>&gt;.
-It will be removed from the design.
+<msg type="warning" file="Xst" num="524" delta="old" >All outputs of the instance &lt;<arg fmt="%s" index="1">convert_hex_H_out0</arg>&gt; of the block &lt;<arg fmt="%s" index="2">conversor_bin_to_hex</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="3">data_flow_n2</arg>&gt;.
+This instance will be removed from the design along with all underlying logic
+</msg>
+
+<msg type="warning" file="Xst" num="524" delta="old" >All outputs of the instance &lt;<arg fmt="%s" index="1">convert_hex_M_out1</arg>&gt; of the block &lt;<arg fmt="%s" index="2">conversor_bin_to_hex</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="3">data_flow_n2</arg>&gt;.
+This instance will be removed from the design along with all underlying logic
+</msg>
+
+<msg type="warning" file="Xst" num="524" delta="old" >All outputs of the instance &lt;<arg fmt="%s" index="1">convert_hex_M_out0</arg>&gt; of the block &lt;<arg fmt="%s" index="2">conversor_bin_to_hex</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="3">data_flow_n2</arg>&gt;.
+This instance will be removed from the design along with all underlying logic
 </msg>
 
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">CURRENT_STATE_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">control_unit_n2</arg>&gt;.
 </msg>
-
-<msg type="warning" file="Xst" num="2170" delta="old" >Unit <arg fmt="%s" index="1">digital_system_n2</arg> : the following signal(s) form a combinatorial loop: </msg>
 
 <msg type="info" file="Xst" num="2169" delta="old" >HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 </msg>

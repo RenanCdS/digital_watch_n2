@@ -11,21 +11,13 @@ entity data_flow_n2 is
 	 -- defined by the H_in1, H_in0, M_in1, and M_in0 inputs) and the second to 00.
 	 -- For normal operation, this input pin should be 1.
 	 Data: in std_logic_vector(3 downto 0); -- Valor das horas ou minutos dependendo do bot'ao selecionado
-	 -- 4-bit input used to set the least significant minute digit of the clock 
-	 -- Valid values are 0 to 9.  
 	 Enable_H_in1: in std_logic;
 	 Enable_H_in0: in std_logic;
 	 Enable_M_in1: in std_logic;
 	 Enable_M_in0: in std_logic;
 	 Clear: in std_logic;
-	 H_out1: out std_logic_vector(6 downto 0);
-	 -- The most significant digit of the hour. Valid values are 0 to 2 ( Hexadecimal value on 7-segment LED)
-	 H_out0: out std_logic_vector(6 downto 0);
-	 -- The most significant digit of the hour. Valid values are 0 to 9 ( Hexadecimal value on 7-segment LED)
-	 M_out1: out std_logic_vector(6 downto 0);
-	 -- The most significant digit of the minute. Valid values are 0 to 9 ( Hexadecimal value on 7-segment LED)
-	 M_out0: out std_logic_vector(6 downto 0)
-	 -- The most significant digit of the minute. Valid values are 0 to 9 ( Hexadecimal value on 7-segment LED)
+	 Seven_segments_display: out std_logic_vector(6 downto 0);
+	 Anodes: out std_logic_vector(3 downto 0)
 );
 end data_flow_n2;
 
@@ -64,6 +56,9 @@ architecture Behavioral of data_flow_n2 is
 		);
 	END COMPONENT;
 	
+	signal anodes_count: natural range 0 to 3 := 0;
+	signal H1_out_signal, H0_out_signal, M1_out_signal, M0_out_signal: std_logic_vector(6 downto 0);
+	
 	signal H_in1_regs_signal: std_logic_vector(1 downto 0);
 	signal H_in0_regs_signal, M_in1_regs_signal, M_in0_regs_signal: std_logic_vector(3 downto 0);
 	
@@ -76,6 +71,23 @@ architecture Behavioral of data_flow_n2 is
 	signal M_out0_bin: std_logic_vector(3 downto 0);--The least significant digit of the minute
 begin
 
+	process (clk)
+	begin
+		case anodes_count is
+		when 0 => 
+			Anodes <= "0111";
+			Seven_segments_display <= H1_out_signal;
+		when 1 => 
+			Anodes <= "1011";
+			Seven_segments_display <= H0_out_signal;
+		when 2 => 
+			Anodes <= "1101";
+			Seven_segments_display <= M1_out_signal;
+		when 3 => 
+			Anodes <= "1110";
+			Seven_segments_display <= M0_out_signal;
+		end case;
+	end process;
 	
 	one_second_clock: clk_division port map (CLK_50 => clk, CLK_1s => clk_1s); 
 	
@@ -114,25 +126,6 @@ begin
 	
 	-- Fim dos Registradore --
 	
---	process (clk) begin
---		if (counter_display = 0)
---			display <= "0111";
---			saida <= saida_H1;
---		elsif (counter_display = 1)
---			display <= "1011";
---			saida <= saida_H0;
---		elsif (counter_display = 2)
---			display <= "1101";
---			saida <= saida_M1;
---		elsif (counter_display = 3)
---			display <= "1110";
---			saida <= saida_M0;
---		end if;
---		end if;
---		end if;
---		end if;
---	end process;
-	
 	process(clk_1s,rst_n) begin 
 	 
 		 if(rst_n = '0') then
@@ -159,11 +152,11 @@ begin
 	 x"1" when counter_hour >=10 else
 	 x"0";
 	-- 7-Segment LED display of H_out1
-	convert_hex_H_out1: conversor_bin_to_hex port map (BIN => H_out1_bin, RESULT => H_out1); 
+	convert_hex_H_out1: conversor_bin_to_hex port map (BIN => H_out1_bin, RESULT => H1_out_signal); 
 	-- H_out0 binary value
 	 H_out0_bin <= std_logic_vector(to_unsigned((counter_hour - to_integer(unsigned(H_out1_bin))*10),4));
 	-- 7-Segment LED display of H_out0
-	convert_hex_H_out0: conversor_bin_to_hex port map (BIN => H_out0_bin, RESULT => H_out0); 
+	convert_hex_H_out0: conversor_bin_to_hex port map (BIN => H_out0_bin, RESULT => H0_out_signal); 
 	-- M_out1 binary value
 	 M_out1_bin <= x"5" when counter_minute >=50 else
 	 x"4" when counter_minute >=40 else
@@ -172,10 +165,10 @@ begin
 	 x"1" when counter_minute >=10 else
 	 x"0";
 	-- 7-Segment LED display of M_out1
-	convert_hex_M_out1: conversor_bin_to_hex port map (BIN => M_out1_bin, RESULT => M_out1); 
+	convert_hex_M_out1: conversor_bin_to_hex port map (BIN => M_out1_bin, RESULT => M1_out_signal); 
 	-- M_out0 binary value
 	 M_out0_bin <= std_logic_vector(to_unsigned((counter_minute - to_integer(unsigned(M_out1_bin))*10),4));
 	-- 7-Segment LED display of M_out0
-	convert_hex_M_out0: conversor_bin_to_hex port map (BIN => M_out0_bin, RESULT => M_out0); 
+	convert_hex_M_out0: conversor_bin_to_hex port map (BIN => M_out0_bin, RESULT => M0_out_signal); 
 end Behavioral;
 

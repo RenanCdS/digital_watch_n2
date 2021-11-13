@@ -1,0 +1,25 @@
+
+# PlanAhead Generated physical constraints 
+
+NET "DATA[3]" LOC = B4;
+NET "DATA[2]" LOC = K3;
+NET "DATA[1]" LOC = L3;
+
+NET "Seven_segments_display[6]" LOC = M12;
+NET "Seven_segments_display[5]" LOC = L13;
+NET "Seven_segments_display[4]" LOC = P12;
+NET "Seven_segments_display[3]" LOC = N11;
+NET "Seven_segments_display[2]" LOC = N14;
+NET "Seven_segments_display[1]" LOC = H12;
+NET "Seven_segments_display[0]" LOC = L14;
+
+NET "Anodes[3]" LOC = K14;
+NET "Anodes[2]" LOC = M13;
+NET "Anodes[1]" LOC = J12;
+NET "Anodes[0]" LOC = F12;
+
+NET "BTN_H1" LOC = A7;
+NET "BTN_H0" LOC = M4;
+NET "BTN_M1" LOC = C11;
+NET "BTN_M0" LOC = G12;
+NET "CLEAR" LOC = E2;

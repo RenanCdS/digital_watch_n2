@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Interface Version="1" Minor="1">
+	<Ifc Id="ROOT" Top="1">
+		<Bus Id="DATA">
+			<Port Id="3" Dir="IN"/>
+			<Port Id="2" Dir="IN"/>
+			<Port Id="1" Dir="IN"/>
+			<Port Id="0" Dir="IN"/>
+		</Bus>
+		<Bus Id="DISPLAY_SEGMENTS_OUT">
+			<Port Id="6" Dir="OUT"/>
+			<Port Id="5" Dir="OUT"/>
+			<Port Id="4" Dir="OUT"/>
+			<Port Id="3" Dir="OUT"/>
+			<Port Id="2" Dir="OUT"/>
+			<Port Id="1" Dir="OUT"/>
+			<Port Id="0" Dir="OUT"/>
+		</Bus>
+		<Bus Id="SEVEN_SEGMENTS_DISPLAYS_CONTROL">
+			<Port Id="3" Dir="OUT"/>
+			<Port Id="2" Dir="OUT"/>
+			<Port Id="1" Dir="OUT"/>
+			<Port Id="0" Dir="OUT"/>
+		</Bus>
+		<Port Id="CLK_UC" Dir="IN"/>
+		<Port Id="RST_UC" Dir="IN"/>
+		<Port Id="RST_WATCH" Dir="IN"/>
+		<Port Id="CLEAR" Dir="IN"/>
+		<Port Id="BTN_H1" Dir="IN"/>
+		<Port Id="BTN_H0" Dir="IN"/>
+		<Port Id="BTN_M1" Dir="IN"/>
+		<Port Id="BTN_M0" Dir="IN"/>
+	</Ifc>
+</Interface>
+
