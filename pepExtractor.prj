@@ -1,1 +1,7 @@
-work	"control_unit_n2.vhd"
+work	"clk_division.vhd"
+work	"conversor_bin_to_hex.vhd"
+work	"data_flow_n2.vhd"
+work	"display_changer.vhd"
+work	"regs.vhd"
+work	"timer_controller.vhd"
+work	"two_bits_regs.vhd"

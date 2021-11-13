@@ -20,7 +20,7 @@ end control_unit_n2;
 architecture Behavioral of control_unit_n2 is
 
 	type STATE_TYPE is (e0, e1, e2, e3, e4, e5, e6); -- todos os estados devem ser declarados!
-	signal CURRENT_STATE, NEXT_STATE : STATE_TYPE;
+	signal current_state, next_state : STATE_TYPE;
 	
 begin
 	
@@ -28,38 +28,38 @@ begin
 	begin
 		if (RST_UC='1') then
 		
-			CURRENT_STATE <= e0;
+			current_state <= e0;
 		
 		elsif (CLK_UC' event and CLK_UC='1') then
 			
-			CURRENT_STATE <= NEXT_STATE;
+			current_state <= next_state;
 		
 		end if;
 	end process;
 	
-	fsm_progress: process (CURRENT_STATE, BTN_H1, BTN_H0, BTN_M1, BTN_M0, RST_WATCH, CLEAR)
+	fsm_progress: process (current_state, BTN_H1, BTN_H0, BTN_M1, BTN_M0, RST_WATCH, CLEAR)
 	begin
 				
-		NEXT_STATE <= CURRENT_STATE;
+		next_state <= current_state;
 		
-		case (CURRENT_STATE) is
+		case (current_state) is
 		
 			when e0 =>
 				RST_WATCH_OUT <= '1';
 				if (RST_WATCH = '1') then
-					NEXT_STATE <= e0;
+					next_state <= e0;
 				elsif (BTN_H1 = '1') then
-					NEXT_STATE <= e1;
+					next_state <= e1;
 				elsif (BTN_H0 = '1') then
-					NEXT_STATE <= e2;
+					next_state <= e2;
 				elsif (BTN_M1 = '1') then
-					NEXT_STATE <= e3;
+					next_state <= e3;
 				elsif (BTN_M0 = '1') then
-					NEXT_STATE <= e4;
+					next_state <= e4;
 				elsif (CLEAR = '1') then
-					NEXT_STATE <= e5;
+					next_state <= e5;
 				else 
-					NEXT_STATE <= e6;
+					next_state <= e6;
 				end if;
 			
 			when e1 =>
@@ -70,19 +70,19 @@ begin
 				CLEAR_OUT <= '0';
 				
 				if (RST_WATCH = '1') then
-					NEXT_STATE <= e0;
+					next_state <= e0;
 				elsif (BTN_H1 = '1') then
-					NEXT_STATE <= e1;
+					next_state <= e1;
 				elsif (BTN_H0 = '1') then
-					NEXT_STATE <= e2;
+					next_state <= e2;
 				elsif (BTN_M1 = '1') then
-					NEXT_STATE <= e3;
+					next_state <= e3;
 				elsif (BTN_M0 = '1') then
-					NEXT_STATE <= e4;
+					next_state <= e4;
 				elsif (CLEAR = '1') then
-					NEXT_STATE <= e5;
+					next_state <= e5;
 				else 
-					NEXT_STATE <= e6;
+					next_state <= e6;
 				end if;
 				
 			when e2 => 
@@ -94,19 +94,19 @@ begin
 				CLEAR_OUT <= '0';
 				
 				if (RST_WATCH = '1') then
-					NEXT_STATE <= e0;
+					next_state <= e0;
 				elsif (BTN_H1 = '1') then
-					NEXT_STATE <= e1;
+					next_state <= e1;
 				elsif (BTN_H0 = '1') then
-					NEXT_STATE <= e2;
+					next_state <= e2;
 				elsif (BTN_M1 = '1') then
-					NEXT_STATE <= e3;
+					next_state <= e3;
 				elsif (BTN_M0 = '1') then
-					NEXT_STATE <= e4;
+					next_state <= e4;
 				elsif (CLEAR = '1') then
-					NEXT_STATE <= e5;
+					next_state <= e5;
 				else 
-					NEXT_STATE <= e6;
+					next_state <= e6;
 				end if;
 				
 			when e3 => 
@@ -118,19 +118,19 @@ begin
 				CLEAR_OUT <= '0';
 				
 				if (RST_WATCH = '1') then
-					NEXT_STATE <= e0;
+					next_state <= e0;
 				elsif (BTN_H1 = '1') then
-					NEXT_STATE <= e1;
+					next_state <= e1;
 				elsif (BTN_H0 = '1') then
-					NEXT_STATE <= e2;
+					next_state <= e2;
 				elsif (BTN_M1 = '1') then
-					NEXT_STATE <= e3;
+					next_state <= e3;
 				elsif (BTN_M0 = '1') then
-					NEXT_STATE <= e4;
+					next_state <= e4;
 				elsif (CLEAR = '1') then
-					NEXT_STATE <= e5;
+					next_state <= e5;
 				else 
-					NEXT_STATE <= e6;
+					next_state <= e6;
 				end if;
 				
 			when e4 => 
@@ -142,38 +142,38 @@ begin
 				CLEAR_OUT <= '0';
 				
 				if (RST_WATCH = '1') then
-					NEXT_STATE <= e0;
+					next_state <= e0;
 				elsif (BTN_H1 = '1') then
-					NEXT_STATE <= e1;
+					next_state <= e1;
 				elsif (BTN_H0 = '1') then
-					NEXT_STATE <= e2;
+					next_state <= e2;
 				elsif (BTN_M1 = '1') then
-					NEXT_STATE <= e3;
+					next_state <= e3;
 				elsif (BTN_M0 = '1') then
-					NEXT_STATE <= e4;
+					next_state <= e4;
 				elsif (CLEAR = '1') then
-					NEXT_STATE <= e5;
+					next_state <= e5;
 				else 
-					NEXT_STATE <= e6;
+					next_state <= e6;
 				end if;
 				
 			when e5 => 
 				CLEAR_OUT <= '1';
 				
 				if (RST_WATCH = '1') then
-					NEXT_STATE <= e0;
+					next_state <= e0;
 				elsif (BTN_H1 = '1') then
-					NEXT_STATE <= e1;
+					next_state <= e1;
 				elsif (BTN_H0 = '1') then
-					NEXT_STATE <= e2;
+					next_state <= e2;
 				elsif (BTN_M1 = '1') then
-					NEXT_STATE <= e3;
+					next_state <= e3;
 				elsif (BTN_M0 = '1') then
-					NEXT_STATE <= e4;
+					next_state <= e4;
 				elsif (CLEAR = '1') then
-					NEXT_STATE <= e5;
+					next_state <= e5;
 				else 
-					NEXT_STATE <= e6;
+					next_state <= e6;
 				end if;
 				
 			when e6 =>
@@ -184,19 +184,19 @@ begin
 				CLEAR_OUT <= '0';
 				
 				if (RST_WATCH = '1') then
-					NEXT_STATE <= e0;
+					next_state <= e0;
 				elsif (BTN_H1 = '1') then
-					NEXT_STATE <= e1;
+					next_state <= e1;
 				elsif (BTN_H0 = '1') then
-					NEXT_STATE <= e2;
+					next_state <= e2;
 				elsif (BTN_M1 = '1') then
-					NEXT_STATE <= e3;
+					next_state <= e3;
 				elsif (BTN_M0 = '1') then
-					NEXT_STATE <= e4;
+					next_state <= e4;
 				elsif (CLEAR = '1') then
-					NEXT_STATE <= e5;
+					next_state <= e5;
 				else 
-					NEXT_STATE <= e6;
+					next_state <= e6;
 				end if;
 				
 		end case;

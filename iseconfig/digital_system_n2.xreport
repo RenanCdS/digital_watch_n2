@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2021-11-12T22:35:05</DateModified>
+  <DateModified>2021-11-13T21:11:25</DateModified>
   <ModuleName>digital_system_n2</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
   <SavedFilePath>/home/ise/ISE_Projects/digital_watch_n2/iseconfig/digital_system_n2.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/ise/ISE_Projects/digital_watch_n2</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>/home/ise/ISE_Projects/digital_watch_n2/</ImplementationReportsDirectory>
   <DateInitialized>2021-11-12T22:35:03</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

@@ -1,0 +1,1 @@
+vhdtdtfi -prj digital_watch_n2 -o /home/ise/ISE_Projects/digital_watch_n2/display_changer.vhi -module display_changer -template /opt/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work display_changer.vhd 

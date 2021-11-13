@@ -100,6 +100,10 @@
     <file xil_pn:fileType="FILE_WEBTALK" xil_pn:name="digital_system_n2_usage.xml"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="digital_system_n2_vhdl.prj"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="digital_system_n2_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="display_changer.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="display_changer.stx"/>
+    <file xil_pn:fileType="FILE_VHDL_INSTTEMPLATE" xil_pn:name="display_changer.vhi"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="display_changer.xst"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="four_bits_regs.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="four_bits_regs.stx"/>
     <file xil_pn:fileType="FILE_VHDL_INSTTEMPLATE" xil_pn:name="four_bits_regs.vhi"/>
@@ -112,6 +116,10 @@
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="regs.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="regs.stx"/>
     <file xil_pn:fileType="FILE_XST" xil_pn:name="regs.xst"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="timer_controller.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="timer_controller.stx"/>
+    <file xil_pn:fileType="FILE_VHDL_INSTTEMPLATE" xil_pn:name="timer_controller.vhi"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="timer_controller.xst"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="two_bits_regs.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="two_bits_regs.stx"/>
     <file xil_pn:fileType="FILE_VHDL_INSTTEMPLATE" xil_pn:name="two_bits_regs.vhi"/>
@@ -224,12 +232,10 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1636756633" xil_pn:in_ck="1448664470567918473" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="5542680231644056236" xil_pn:start_ts="1636756609">
+    <transform xil_pn:end_ts="1636841624" xil_pn:in_ck="-227760817811257734" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="5542680231644056236" xil_pn:start_ts="1636841605">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name=".lso"/>
       <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
       <outfile xil_pn:name="data_flow_n2.ngr"/>
@@ -252,6 +258,8 @@
     <transform xil_pn:end_ts="1636756788" xil_pn:in_ck="6116520742268791210" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-6765777554303446276" xil_pn:start_ts="1636756775">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="_ngo"/>
       <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
       <outfile xil_pn:name="digital_system_n2.bld"/>
@@ -262,6 +270,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
       <outfile xil_pn:name="digital_system_n2.pcf"/>
       <outfile xil_pn:name="digital_system_n2_map.map"/>
@@ -276,6 +285,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
       <outfile xil_pn:name="digital_system_n2.ncd"/>
       <outfile xil_pn:name="digital_system_n2.pad"/>
@@ -291,6 +301,9 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
       <outfile xil_pn:name="digital_system_n2.bgn"/>
       <outfile xil_pn:name="digital_system_n2.bit"/>
@@ -302,6 +315,7 @@
     <transform xil_pn:end_ts="1636756846" xil_pn:in_ck="575371328277609233" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416186" xil_pn:start_ts="1636756839">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>
       <outfile xil_pn:name="digital_system_n2.twr"/>
       <outfile xil_pn:name="digital_system_n2.twx"/>

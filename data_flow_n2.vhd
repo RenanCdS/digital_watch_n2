@@ -4,20 +4,18 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.numeric_std.all;
 
 entity data_flow_n2 is
-    Port ( clk: in std_logic; 
-	 -- clock 50 MHz
-	 rst_n: in std_logic; 
-	 -- Active low reset pulse, to set the time to the input hour and minute (as 
-	 -- defined by the H_in1, H_in0, M_in1, and M_in0 inputs) and the second to 00.
-	 -- For normal operation, this input pin should be 1.
-	 Data: in std_logic_vector(3 downto 0); -- Valor das horas ou minutos dependendo do bot'ao selecionado
-	 Enable_H_in1: in std_logic;
-	 Enable_H_in0: in std_logic;
-	 Enable_M_in1: in std_logic;
-	 Enable_M_in0: in std_logic;
-	 Clear: in std_logic;
-	 Seven_segments_display: out std_logic_vector(6 downto 0);
-	 Anodes: out std_logic_vector(3 downto 0)
+    Port (CLK: in std_logic; 
+	 RST_N: in std_logic; 
+	 -- Para operar normalmente, essa entrada deve ser 1.
+	 -- Para utlizar os valores definidos pelos registradores de horas e minutos essa entrada deve ser 0
+	 DATA: in std_logic_vector(3 downto 0); -- Valor das horas ou minutos dependendo do bot'ao selecionado
+	 ENABLE_H_IN1 : in std_logic;
+	 ENABLE_H_IN0 : in std_logic;
+	 ENABLE_M_IN1 : in std_logic;
+	 ENABLE_M_IN0 : in std_logic;
+	 CLEAR: in std_logic;
+	 SEVEN_SEGMENTS_DISPLAY: out std_logic_vector(6 downto 0);
+	 ANODES: out std_logic_vector(3 downto 0)
 );
 end data_flow_n2;
 
@@ -56,119 +54,117 @@ architecture Behavioral of data_flow_n2 is
 		);
 	END COMPONENT;
 	
-	signal anodes_count: natural range 0 to 3 := 0;
-	signal H1_out_signal, H0_out_signal, M1_out_signal, M0_out_signal: std_logic_vector(6 downto 0);
+	COMPONENT timer_controller
+	PORT(
+		CLK_1s : IN std_logic;
+		RST_N : IN std_logic;
+		H_IN1 : IN std_logic_vector(1 downto 0);
+		H_IN0 : IN std_logic_vector(3 downto 0);
+		M_IN1 : IN std_logic_vector(3 downto 0);
+		M_IN0 : IN std_logic_vector(3 downto 0);          
+		H_OUT1_BIN : OUT std_logic_vector(3 downto 0);
+		H_OUT0_BIN : OUT std_logic_vector(3 downto 0);
+		M_OUT1_BIN : OUT std_logic_vector(3 downto 0);
+		M_OUT0_BIN : OUT std_logic_vector(3 downto 0)
+		);
+	END COMPONENT;
 	
-	signal H_in1_regs_signal: std_logic_vector(1 downto 0);
-	signal H_in0_regs_signal, M_in1_regs_signal, M_in0_regs_signal: std_logic_vector(3 downto 0);
+	COMPONENT display_changer
+	PORT(
+		CLK : IN std_logic;
+		H1_OUT : IN std_logic_vector(6 downto 0);
+		H0_OUT : IN std_logic_vector(6 downto 0);
+		M1_OUT : IN std_logic_vector(6 downto 0);
+		M0_OUT : IN std_logic_vector(6 downto 0);          
+		SEVEN_SEGMENTS_DISPLAY : OUT std_logic_vector(6 downto 0);
+		ANODES : OUT std_logic_vector(3 downto 0)
+		);
+	END COMPONENT;
+	
+	signal h1_out_signal, h0_out_signal, m1_out_signal, m0_out_signal: std_logic_vector(6 downto 0);
+	
+	signal h_in1_regs_signal: std_logic_vector(1 downto 0);
+	signal h_in0_regs_signal, m_in1_regs_signal, m_in0_regs_signal: std_logic_vector(3 downto 0);
+	
+	signal h1_bin_signal, h0_bin_signal, m1_bin_signal, m0_bin_signal : std_logic_vector(3 downto 0);
 	
 	signal clk_1s: std_logic; -- 1-s clock
-	signal counter_hour, counter_minute, counter_second: integer;
-	-- counter using for create time
-	signal H_out1_bin: std_logic_vector(3 downto 0); --The most significant digit of the hour
-	signal H_out0_bin: std_logic_vector(3 downto 0);--The least significant digit of the hour
-	signal M_out1_bin: std_logic_vector(3 downto 0);--The most significant digit of the minute
-	signal M_out0_bin: std_logic_vector(3 downto 0);--The least significant digit of the minute
+
 begin
 
-	process (clk)
-	begin
-		case anodes_count is
-		when 0 => 
-			Anodes <= "0111";
-			Seven_segments_display <= H1_out_signal;
-		when 1 => 
-			Anodes <= "1011";
-			Seven_segments_display <= H0_out_signal;
-		when 2 => 
-			Anodes <= "1101";
-			Seven_segments_display <= M1_out_signal;
-		when 3 => 
-			Anodes <= "1110";
-			Seven_segments_display <= M0_out_signal;
-		end case;
-	end process;
+	-- Componente responsavel por alternar os minutos e horas no display de 7 segmentos
+	display_changer_inst: display_changer PORT MAP(
+		CLK => CLK,
+		H1_OUT => h1_out_signal,
+		H0_OUT => h0_out_signal,
+		M1_OUT => m1_out_signal,
+		M0_OUT => m0_out_signal,
+		SEVEN_SEGMENTS_DISPLAY => SEVEN_SEGMENTS_DISPLAY,
+		ANODES => ANODES
+	);
 	
-	one_second_clock: clk_division port map (CLK_50 => clk, CLK_1s => clk_1s); 
+	-- Componente responsavel pela conversao de clock de 1 segundo
+	one_second_clock: clk_division port map (CLK_50 => CLK, CLK_1s => clk_1s); 
 	
 	-- Registradores responsaveis por guardar valores dos digitos referentes a HH:MM
-	H_in1_regs: two_bits_regs PORT MAP(
-		CLOCK => clk,
-		DATA => Data(1 downto 0),
-		ENABLE => Enable_H_in1,
-		CLEAR => Clear,
-		Q_OUT => H_in1_regs_signal
+	h_in1_regs: two_bits_regs PORT MAP(
+		CLOCK => CLK,
+		DATA => DATA(1 downto 0),
+		ENABLE => ENABLE_H_IN1,
+		CLEAR => CLEAR,
+		Q_OUT => h_in1_regs_signal
 	);
 	
-	H_in0_regs: four_bits_regs PORT MAP(
-		CLOCK => clk,
-		DATA => Data,
-		ENABLE => Enable_H_in0,
-		CLEAR => Clear,
-		Q_OUT => H_in0_regs_signal
+	h_in0_regs: four_bits_regs PORT MAP(
+		CLOCK => CLK,
+		DATA => DATA,
+		ENABLE => ENABLE_H_IN0,
+		CLEAR => CLEAR,
+		Q_OUT => h_in0_regs_signal
 	);
 	
-	M_in1_regs: four_bits_regs PORT MAP(
-		CLOCK => clk,
-		DATA => Data,
-		ENABLE => Enable_M_in1,
-		CLEAR => Clear,
-		Q_OUT => M_in1_regs_signal
+	m_in1_regs: four_bits_regs PORT MAP(
+		CLOCK => CLK,
+		DATA => DATA,
+		ENABLE => ENABLE_M_IN1,
+		CLEAR => CLEAR,
+		Q_OUT => m_in1_regs_signal
 	);
 	
-	M_in0_regs: four_bits_regs PORT MAP(
-		CLOCK => clk,
-		DATA => Data,
-		ENABLE => Enable_M_in0,
-		CLEAR => Clear,
-		Q_OUT => M_in0_regs_signal
+	m_in0_regs: four_bits_regs PORT MAP(
+		CLOCK => CLK,
+		DATA => DATA,
+		ENABLE => ENABLE_M_IN0,
+		CLEAR => CLEAR,
+		Q_OUT => m_in0_regs_signal
 	);
 	
-	-- Fim dos Registradore --
+	-- Fim dos Registradores --
 	
-	process(clk_1s,rst_n) begin 
+	-- Componente responsavel por realizar a logica de contagem de segundos, minutos e horas
+	timer_controller_Inst : timer_controller PORT MAP(
+		CLK_1s => clk_1s,
+		RST_N => RST_N,
+		H_IN1 => h_in1_regs_signal,
+		H_IN0 => h_in0_regs_signal,
+		M_IN1 => m_in1_regs_signal,
+		M_IN0 => m_in0_regs_signal,
+		H_OUT1_BIN => h1_bin_signal,
+		H_OUT0_BIN => h0_bin_signal,
+		M_OUT1_BIN => m1_bin_signal,
+		M_OUT0_BIN => m0_bin_signal 
+	);
 	 
-		 if(rst_n = '0') then
-		 counter_hour <= to_integer(unsigned(H_in1_regs_signal))*10 + to_integer(unsigned(H_in0_regs_signal));
-		 counter_minute <= to_integer(unsigned(M_in1_regs_signal))*10 + to_integer(unsigned(M_in0_regs_signal));
-		 counter_second <= 0;
-		 elsif(rising_edge(clk_1s)) then
-		 counter_second <= counter_second + 1;
-		 if(counter_second >=59) then -- second > 59 then minute increases
-		 counter_minute <= counter_minute + 1;
-		 counter_second <= 0;
-		 if(counter_minute >=59) then -- minute > 59 then hour increases
-		 counter_minute <= 0;
-		 counter_hour <= counter_hour + 1;
-		 if(counter_hour >= 24) then -- hour > 24 then set hour to 0
-		 counter_hour <= 0;
-		 end if;
-		 end if;
-		 end if;
-		 end if;
-	 end process;
-
-	 H_out1_bin <= x"2" when counter_hour >=20 else
-	 x"1" when counter_hour >=10 else
-	 x"0";
-	-- 7-Segment LED display of H_out1
-	convert_hex_H_out1: conversor_bin_to_hex port map (BIN => H_out1_bin, RESULT => H1_out_signal); 
-	-- H_out0 binary value
-	 H_out0_bin <= std_logic_vector(to_unsigned((counter_hour - to_integer(unsigned(H_out1_bin))*10),4));
-	-- 7-Segment LED display of H_out0
-	convert_hex_H_out0: conversor_bin_to_hex port map (BIN => H_out0_bin, RESULT => H0_out_signal); 
-	-- M_out1 binary value
-	 M_out1_bin <= x"5" when counter_minute >=50 else
-	 x"4" when counter_minute >=40 else
-	 x"3" when counter_minute >=30 else
-	 x"2" when counter_minute >=20 else
-	 x"1" when counter_minute >=10 else
-	 x"0";
-	-- 7-Segment LED display of M_out1
-	convert_hex_M_out1: conversor_bin_to_hex port map (BIN => M_out1_bin, RESULT => M1_out_signal); 
-	-- M_out0 binary value
-	 M_out0_bin <= std_logic_vector(to_unsigned((counter_minute - to_integer(unsigned(M_out1_bin))*10),4));
-	-- 7-Segment LED display of M_out0
-	convert_hex_M_out0: conversor_bin_to_hex port map (BIN => M_out0_bin, RESULT => M0_out_signal); 
+	-- Display de 7 segmentos para H1
+	convert_hex_H_out1: conversor_bin_to_hex port map (BIN => h1_bin_signal, RESULT => h1_out_signal); 
+	 
+	-- Display de 7 segmentos para H0
+	convert_hex_H_out0: conversor_bin_to_hex port map (BIN => h0_bin_signal, RESULT => h0_out_signal); 
+	 
+	-- Display de 7 segmentos para M1
+	convert_hex_M_out1: conversor_bin_to_hex port map (BIN => m1_bin_signal, RESULT => m1_out_signal); 
+	 
+	-- Display de 7 segmentos para M0
+	convert_hex_M_out0: conversor_bin_to_hex port map (BIN => m0_bin_signal, RESULT => m0_out_signal); 
 end Behavioral;
 

@@ -23,16 +23,16 @@ architecture Behavioral of digital_system_n2 is
 
 	COMPONENT data_flow_n2
 	PORT(
-		clk : IN std_logic;
-		rst_n : IN std_logic;
-		Data : IN std_logic_vector(3 downto 0);
-		Enable_H_in1 : IN std_logic;
-		Enable_H_in0 : IN std_logic;
-		Enable_M_in1 : IN std_logic;
-		Enable_M_in0 : IN std_logic;
-		Clear : IN std_logic;          
-		Seven_segments_display: out std_logic_vector(6 downto 0);
-		Anodes: out std_logic_vector(3 downto 0)
+		CLK : IN std_logic;
+		RST_N : IN std_logic;
+		DATA : IN std_logic_vector(3 downto 0);
+		ENABLE_H_IN1 : IN std_logic;
+		ENABLE_H_IN0 : IN std_logic;
+		ENABLE_M_IN1 : IN std_logic;
+		ENABLE_M_IN0 : IN std_logic;
+		CLEAR : IN std_logic;          
+		SEVEN_SEGMENTS_DISPLAY : OUT std_logic_vector(6 downto 0);
+		ANODES : OUT std_logic_vector(3 downto 0)
 		);
 	END COMPONENT;
 	
@@ -55,20 +55,20 @@ architecture Behavioral of digital_system_n2 is
 		);
 	END COMPONENT;
 	
-	signal ENH1_Enable_H_in1, ENH0_Enable_H_in0, ENM1_Enable_M_in1, ENM0_Enable_M_in0, Clear_UC_Clear_DF, RST_WATCH_UC_RST_WATCH_DF : STD_LOGIC;
+	signal enh1_enable_h_in1, enh0_enable_h_in0, enm1_enable_m_in1, enm0_enable_m_in0, clear_uc_clear_df, rst_watch_uc_rst_watch_df : STD_LOGIC;
 begin
 
 	data_flow: data_flow_n2 PORT MAP(
-		clk => CLK_UC,
-		rst_n => RST_WATCH,
-		Data => DATA,
-		Enable_H_in1 => ENH1_Enable_H_in1,
-		Enable_H_in0 => ENH0_Enable_H_in0,
-		Enable_M_in1 => ENM1_Enable_M_in1,
-		Enable_M_in0 => ENM0_Enable_M_in0,
-		Clear => Clear_UC_Clear_DF,
-		Seven_segments_display => SEVEN_SEGMENTS_DISPLAY,
-		Anodes => ANODES
+		CLK => CLK_UC,
+		RST_N => RST_WATCH,
+		DATA => DATA,
+		ENABLE_H_IN1 => enh1_enable_h_in1,
+		ENABLE_H_IN0 => enh0_enable_h_in0,
+		ENABLE_M_IN1 => enm1_enable_m_in1,
+		ENABLE_M_IN0 => enm0_enable_m_in0,
+		CLEAR => clear_uc_clear_df,
+		SEVEN_SEGMENTS_DISPLAY => SEVEN_SEGMENTS_DISPLAY,
+		ANODES => ANODES
 	);
 	
 	control_unit: control_unit_n2 PORT MAP(
@@ -80,12 +80,12 @@ begin
 		BTN_H0 => BTN_H0,
 		BTN_M1 => BTN_M1,
 		BTN_M0 => BTN_M0,
-		ENABLE_H1 => ENH1_Enable_H_in1,
-		ENABLE_H0 => ENH0_Enable_H_in0,
-		ENABLE_M1 => ENM1_Enable_M_in1,
-		ENABLE_M0 => ENM0_Enable_M_in0,
-		CLEAR_OUT => Clear_UC_Clear_DF,
-		RST_WATCH_OUT => RST_WATCH_UC_RST_WATCH_DF
+		ENABLE_H1 => enh1_enable_h_in1,
+		ENABLE_H0 => enh0_enable_h_in0,
+		ENABLE_M1 => enm1_enable_m_in1,
+		ENABLE_M0 => enm0_enable_m_in0,
+		CLEAR_OUT => clear_uc_clear_df,
+		RST_WATCH_OUT => rst_watch_uc_rst_watch_df
 	);
 
 end Behavioral;

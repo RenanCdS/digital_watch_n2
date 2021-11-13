@@ -1,49 +1,64 @@
-V3 27
+V3 35
 FL /home/ise/ISE_Projects/digital_watch_n2/clk_division.vhd 2021/11/12.03:22:16 P.20131013
-EN work/clk_division 1636756614 \
+EN work/clk_division 1636841611 \
       FL /home/ise/ISE_Projects/digital_watch_n2/clk_division.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179
-AR work/clk_division/Behavioral 1636756615 \
+AR work/clk_division/Behavioral 1636841612 \
       FL /home/ise/ISE_Projects/digital_watch_n2/clk_division.vhd \
-      EN work/clk_division 1636756614
-FL /home/ise/ISE_Projects/digital_watch_n2/control_unit_n2.vhd 2021/11/12.17:13:05 P.20131013
-EN work/control_unit_n2 1636756624 \
+      EN work/clk_division 1636841611
+FL /home/ise/ISE_Projects/digital_watch_n2/control_unit_n2.vhd 2021/11/13.22:06:49 P.20131013
+EN work/control_unit_n2 1636841623 \
       FL /home/ise/ISE_Projects/digital_watch_n2/control_unit_n2.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/control_unit_n2/Behavioral 1636756625 \
+AR work/control_unit_n2/Behavioral 1636841624 \
       FL /home/ise/ISE_Projects/digital_watch_n2/control_unit_n2.vhd \
-      EN work/control_unit_n2 1636756624
+      EN work/control_unit_n2 1636841623
 FL /home/ise/ISE_Projects/digital_watch_n2/conversor_bin_to_hex.vhd 2021/11/11.01:26:54 P.20131013
-EN work/conversor_bin_to_hex 1636756620 \
+EN work/conversor_bin_to_hex 1636841619 \
       FL /home/ise/ISE_Projects/digital_watch_n2/conversor_bin_to_hex.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/conversor_bin_to_hex/Behavioral 1636756621 \
+AR work/conversor_bin_to_hex/Behavioral 1636841620 \
       FL /home/ise/ISE_Projects/digital_watch_n2/conversor_bin_to_hex.vhd \
-      EN work/conversor_bin_to_hex 1636756620
-FL /home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd 2021/11/13.03:16:56 P.20131013
-EN work/data_flow_n2 1636756622 \
+      EN work/conversor_bin_to_hex 1636841619
+FL /home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd 2021/11/13.22:08:44 P.20131013
+EN work/data_flow_n2 1636841621 \
       FL /home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
-AR work/data_flow_n2/Behavioral 1636756623 \
+AR work/data_flow_n2/Behavioral 1636841622 \
       FL /home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd \
-      EN work/data_flow_n2 1636756622 CP clk_division CP two_bits_regs \
-      CP four_bits_regs CP conversor_bin_to_hex
-FL /home/ise/ISE_Projects/digital_watch_n2/digital_system_n2.vhd 2021/11/13.03:17:38 P.20131013
-EN work/digital_system_n2 1636756626 \
+      EN work/data_flow_n2 1636841621 CP display_changer CP clk_division \
+      CP two_bits_regs CP four_bits_regs CP timer_controller \
+      CP conversor_bin_to_hex
+FL /home/ise/ISE_Projects/digital_watch_n2/digital_system_n2.vhd 2021/11/13.22:13:16 P.20131013
+EN work/digital_system_n2 1636841625 \
       FL /home/ise/ISE_Projects/digital_watch_n2/digital_system_n2.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/digital_system_n2/Behavioral 1636756627 \
+AR work/digital_system_n2/Behavioral 1636841626 \
       FL /home/ise/ISE_Projects/digital_watch_n2/digital_system_n2.vhd \
-      EN work/digital_system_n2 1636756626 CP data_flow_n2 CP control_unit_n2
+      EN work/digital_system_n2 1636841625 CP data_flow_n2 CP control_unit_n2
+FL /home/ise/ISE_Projects/digital_watch_n2/display_changer.vhd 2021/11/13.22:01:23 P.20131013
+EN work/display_changer 1636841609 \
+      FL /home/ise/ISE_Projects/digital_watch_n2/display_changer.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/display_changer/Behavioral 1636841610 \
+      FL /home/ise/ISE_Projects/digital_watch_n2/display_changer.vhd \
+      EN work/display_changer 1636841609
 FL /home/ise/ISE_Projects/digital_watch_n2/regs.vhd 2021/11/12.03:52:08 P.20131013
-EN work/four_bits_regs 1636756618 \
+EN work/four_bits_regs 1636841615 \
       FL /home/ise/ISE_Projects/digital_watch_n2/regs.vhd PB ieee/std_logic_1164 1381692176
-AR work/four_bits_regs/Behavioral 1636756619 \
-      FL /home/ise/ISE_Projects/digital_watch_n2/regs.vhd EN work/four_bits_regs 1636756618
+AR work/four_bits_regs/Behavioral 1636841616 \
+      FL /home/ise/ISE_Projects/digital_watch_n2/regs.vhd EN work/four_bits_regs 1636841615
+FL /home/ise/ISE_Projects/digital_watch_n2/timer_controller.vhd 2021/11/13.21:37:46 P.20131013
+EN work/timer_controller 1636841617 \
+      FL /home/ise/ISE_Projects/digital_watch_n2/timer_controller.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
+AR work/timer_controller/Behavioral 1636841618 \
+      FL /home/ise/ISE_Projects/digital_watch_n2/timer_controller.vhd \
+      EN work/timer_controller 1636841617
 FL /home/ise/ISE_Projects/digital_watch_n2/two_bits_regs.vhd 2021/11/12.03:50:20 P.20131013
-EN work/two_bits_regs 1636756616 \
+EN work/two_bits_regs 1636841613 \
       FL /home/ise/ISE_Projects/digital_watch_n2/two_bits_regs.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/two_bits_regs/Behavioral 1636756617 \
+AR work/two_bits_regs/Behavioral 1636841614 \
       FL /home/ise/ISE_Projects/digital_watch_n2/two_bits_regs.vhd \
-      EN work/two_bits_regs 1636756616
+      EN work/two_bits_regs 1636841613
