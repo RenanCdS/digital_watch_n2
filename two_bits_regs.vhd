@@ -18,7 +18,7 @@ begin
 			q_out_temp <= "00"; -- Caso o clear esteja ativo a saida recebera 00
 		elsif CLOCK'EVENT and CLOCK = '1' then -- Aguarda a borda de subida do clock
 			if ENABLE = '1' then
-				q_out_temp <= data;
+				q_out_temp <= DATA;
 			else
 				q_out_temp <= q_out_temp;
 			end if;

@@ -19,15 +19,19 @@ begin
 			when 0 => 
 				ANODES <= "0111";
 				SEVEN_SEGMENTS_DISPLAY <= H1_OUT;
+				anodes_count <= anodes_count + 1;
 			when 1 => 
 				ANODES <= "1011";
 				SEVEN_SEGMENTS_DISPLAY <= H0_OUT;
+				anodes_count <= anodes_count + 1;
 			when 2 => 
 				ANODES <= "1101";
 				SEVEN_SEGMENTS_DISPLAY <= M1_OUT;
+				anodes_count <= anodes_count + 1;
 			when 3 => 
 				ANODES <= "1110";
 				SEVEN_SEGMENTS_DISPLAY <= M0_OUT;
+				anodes_count <= 0;
 		end case;
 	end process;
 

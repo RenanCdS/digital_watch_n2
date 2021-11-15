@@ -45,16 +45,16 @@ Setup/Hold to clock CLK_UC
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-BTN_H0      |    2.875(R)|    0.179(R)|CLK_UC_BUFGP      |   0.000|
-BTN_H1      |    2.548(R)|    0.444(R)|CLK_UC_BUFGP      |   0.000|
-BTN_M0      |    0.879(R)|    0.731(R)|CLK_UC_BUFGP      |   0.000|
-BTN_M1      |    2.316(R)|    0.207(R)|CLK_UC_BUFGP      |   0.000|
-CLEAR       |    0.710(R)|    0.613(R)|CLK_UC_BUFGP      |   0.000|
-DATA<0>     |    1.691(R)|    0.060(R)|CLK_UC_BUFGP      |   0.000|
-DATA<1>     |    2.196(R)|    1.076(R)|CLK_UC_BUFGP      |   0.000|
-DATA<2>     |    1.723(R)|    1.358(R)|CLK_UC_BUFGP      |   0.000|
-DATA<3>     |    1.484(R)|    0.587(R)|CLK_UC_BUFGP      |   0.000|
-RST_WATCH   |    2.573(R)|    0.163(R)|CLK_UC_BUFGP      |   0.000|
+BTN_H0      |    2.912(R)|    0.227(R)|CLK_UC_BUFGP      |   0.000|
+BTN_H1      |    2.789(R)|    0.272(R)|CLK_UC_BUFGP      |   0.000|
+BTN_M0      |    0.956(R)|    0.488(R)|CLK_UC_BUFGP      |   0.000|
+BTN_M1      |    2.269(R)|    0.069(R)|CLK_UC_BUFGP      |   0.000|
+CLEAR       |    0.961(R)|    0.413(R)|CLK_UC_BUFGP      |   0.000|
+DATA<0>     |    1.486(R)|    0.667(R)|CLK_UC_BUFGP      |   0.000|
+DATA<1>     |    1.778(R)|    0.159(R)|CLK_UC_BUFGP      |   0.000|
+DATA<2>     |    1.578(R)|    0.493(R)|CLK_UC_BUFGP      |   0.000|
+DATA<3>     |    1.229(R)|    0.600(R)|CLK_UC_BUFGP      |   0.000|
+RST_WATCH   |    3.535(R)|   -0.272(R)|CLK_UC_BUFGP      |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock to Setup on destination clock CLK_UC
@@ -62,11 +62,11 @@ Clock to Setup on destination clock CLK_UC
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-CLK_UC         |    5.058|         |         |         |
+CLK_UC         |    4.847|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Fri Nov 12 22:40:45 2021 
+Analysis completed Sat Nov 13 22:18:22 2021 
 --------------------------------------------------------------------------------
 
 Trace Settings:

@@ -40,7 +40,7 @@ begin
 		 if(counter_minute >=59) then
 		 counter_minute <= 0;
 		 counter_hour <= counter_hour + 1;
-		 if(counter_hour >= 24) then
+		 if(counter_hour >= 23) then -- Validar com 24 
 		 counter_hour <= 0;
 		 end if;
 		 end if;

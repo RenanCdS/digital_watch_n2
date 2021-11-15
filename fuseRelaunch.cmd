@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -o "/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2_TB_isim_beh.exe" -prj "/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2_TB_beh.prj" "work.data_flow_n2_TB" 
+-intstyle "ise" -incremental -o "/home/ise/ISE_Projects/digital_watch_n2/digital_system_n2_TB_isim_beh.exe" -prj "/home/ise/ISE_Projects/digital_watch_n2/digital_system_n2_TB_beh.prj" "work.digital_system_n2_TB" 

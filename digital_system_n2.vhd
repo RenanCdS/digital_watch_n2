@@ -5,7 +5,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity digital_system_n2 is
 	Port ( 
-			  CLK_UC : in  STD_LOGIC;
+			  CLK : in  STD_LOGIC;
            RST_UC : in  STD_LOGIC;
 			  DATA : in STD_LOGIC_VECTOR(3 downto 0);
 			  RST_WATCH : in STD_LOGIC;
@@ -59,8 +59,8 @@ architecture Behavioral of digital_system_n2 is
 begin
 
 	data_flow: data_flow_n2 PORT MAP(
-		CLK => CLK_UC,
-		RST_N => RST_WATCH,
+		CLK => CLK,
+		RST_N => rst_watch_uc_rst_watch_df,
 		DATA => DATA,
 		ENABLE_H_IN1 => enh1_enable_h_in1,
 		ENABLE_H_IN0 => enh0_enable_h_in0,
@@ -72,7 +72,7 @@ begin
 	);
 	
 	control_unit: control_unit_n2 PORT MAP(
-		CLK_UC => CLK_UC,
+		CLK_UC => CLK,
 		RST_UC => RST_UC,
 		CLEAR => CLEAR,
 		RST_WATCH => RST_WATCH,
