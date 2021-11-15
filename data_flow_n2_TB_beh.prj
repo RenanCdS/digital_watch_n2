@@ -1,0 +1,8 @@
+vhdl work "two_bits_regs.vhd"
+vhdl work "timer_controller.vhd"
+vhdl work "regs.vhd"
+vhdl work "display_changer.vhd"
+vhdl work "conversor_bin_to_hex.vhd"
+vhdl work "clk_division.vhd"
+vhdl work "data_flow_n2.vhd"
+vhdl work "data_flow_n2_TB.vhd"

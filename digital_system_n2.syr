@@ -5,7 +5,7 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.07 secs
  
 --> 
 Parameter xsthdpdir set to xst
@@ -108,7 +108,9 @@ Slice Utilization Ratio Delta      : 5
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "/home/ise/ISE_Projects/digital_watch_n2/display_changer.vhd" in Library work.
-Architecture behavioral of Entity display_changer is up to date.
+WARNING:HDLParsers:3530 - Time stamp of file "/home/ise/ISE_Projects/digital_watch_n2/display_changer.vhd" is newer than current system time.
+Entity <display_changer> compiled.
+Entity <display_changer> (Architecture <behavioral>) compiled.
 Compiling vhdl file "/home/ise/ISE_Projects/digital_watch_n2/clk_division.vhd" in Library work.
 Architecture behavioral of Entity clk_division is up to date.
 Compiling vhdl file "/home/ise/ISE_Projects/digital_watch_n2/two_bits_regs.vhd" in Library work.
@@ -123,8 +125,7 @@ Compiling vhdl file "/home/ise/ISE_Projects/digital_watch_n2/conversor_bin_to_he
 Architecture behavioral of Entity conversor_bin_to_hex is up to date.
 Compiling vhdl file "/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd" in Library work.
 WARNING:HDLParsers:3530 - Time stamp of file "/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd" is newer than current system time.
-Entity <data_flow_n2> compiled.
-Entity <data_flow_n2> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity data_flow_n2 is up to date.
 Compiling vhdl file "/home/ise/ISE_Projects/digital_watch_n2/control_unit_n2.vhd" in Library work.
 WARNING:HDLParsers:3530 - Time stamp of file "/home/ise/ISE_Projects/digital_watch_n2/control_unit_n2.vhd" is newer than current system time.
 Architecture behavioral of Entity control_unit_n2 is up to date.
@@ -164,8 +165,6 @@ Analyzing Entity <data_flow_n2> in library <work> (Architecture <behavioral>).
 Entity <data_flow_n2> analyzed. Unit <data_flow_n2> generated.
 
 Analyzing Entity <display_changer> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "/home/ise/ISE_Projects/digital_watch_n2/display_changer.vhd" line 16: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
-   <anodes_count>, <H1_OUT>, <H0_OUT>, <M1_OUT>, <M0_OUT>
 Entity <display_changer> analyzed. Unit <display_changer> generated.
 
 Analyzing Entity <clk_division> in library <work> (Architecture <behavioral>).
@@ -216,8 +215,22 @@ Unit <control_unit_n2> synthesized.
 
 Synthesizing Unit <display_changer>.
     Related source file is "/home/ise/ISE_Projects/digital_watch_n2/display_changer.vhd".
-WARNING:Xst:647 - Input <CLK> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Using one-hot encoding for signal <anodes_count>.
+    Found finite state machine <FSM_1> for signal <anodes_count>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 4                                              |
+    | Inputs             | 0                                              |
+    | Outputs            | 8                                              |
+    | Clock              | CLK                       (rising_edge)        |
+    | Power Up State     | 00                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 7-bit register for signal <SEVEN_SEGMENTS_DISPLAY>.
+    Found 4-bit register for signal <ANODES>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  11 D-type flip-flop(s).
 Unit <display_changer> synthesized.
 
 
@@ -318,9 +331,10 @@ Macro Statistics
 # Counters                                             : 4
  28-bit up counter                                     : 1
  32-bit up counter                                     : 3
-# Registers                                            : 4
+# Registers                                            : 6
  2-bit register                                        : 1
- 4-bit register                                        : 3
+ 4-bit register                                        : 4
+ 7-bit register                                        : 1
 # Comparators                                          : 14
  28-bit comparator greatequal                          : 1
  28-bit comparator less                                : 1
@@ -333,6 +347,16 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <data_flow/display_changer_inst/anodes_count/FSM> on signal <anodes_count[1:4]> with one-hot encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 0001
+ 01    | 0010
+ 10    | 0100
+ 11    | 1000
+-------------------
 Analyzing FSM <FSM_0> for best encoding.
 Optimizing FSM <control_unit/current_state/FSM> on signal <current_state[1:4]> with gray encoding.
 -------------------
@@ -353,7 +377,7 @@ Optimizing FSM <control_unit/current_state/FSM> on signal <current_state[1:4]> w
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# FSMs                                                 : 1
+# FSMs                                                 : 2
 # ROMs                                                 : 4
  16x7-bit ROM                                          : 4
 # Multipliers                                          : 4
@@ -366,8 +390,8 @@ Macro Statistics
 # Counters                                             : 4
  28-bit up counter                                     : 1
  32-bit up counter                                     : 3
-# Registers                                            : 14
- Flip-Flops                                            : 14
+# Registers                                            : 25
+ Flip-Flops                                            : 25
 # Comparators                                          : 14
  28-bit comparator greatequal                          : 1
  28-bit comparator less                                : 1
@@ -379,9 +403,10 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:2170 - Unit data_flow_n2 : the following signal(s) form a combinatorial loop: ANODES<0>.
 
 Optimizing unit <digital_system_n2> ...
+
+Optimizing unit <display_changer> ...
 
 Optimizing unit <timer_controller> ...
 
@@ -389,7 +414,7 @@ Optimizing unit <data_flow_n2> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block digital_system_n2, actual ratio is 26.
+Found area constraint ratio of 100 (+ 5) on block digital_system_n2, actual ratio is 25.
 
 Final Macro Processing ...
 
@@ -397,8 +422,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 142
- Flip-Flops                                            : 142
+# Registers                                            : 157
+ Flip-Flops                                            : 157
 
 =========================================================================
 
@@ -427,24 +452,26 @@ Design Statistics
 # IOs                              : 23
 
 Cell Usage :
-# BELS                             : 824
+# BELS                             : 818
 #      GND                         : 1
 #      INV                         : 27
-#      LUT1                        : 104
+#      LUT1                        : 103
 #      LUT2                        : 41
 #      LUT3                        : 91
 #      LUT3_D                      : 2
-#      LUT4                        : 171
+#      LUT4                        : 167
 #      LUT4_L                      : 1
 #      MUXCY                       : 248
-#      MUXF5                       : 6
+#      MUXF5                       : 5
 #      VCC                         : 1
 #      XORCY                       : 131
-# FlipFlops/Latches                : 142
+# FlipFlops/Latches                : 157
+#      FD                          : 4
 #      FDC                         : 36
 #      FDCE                        : 14
 #      FDCPE                       : 64
-#      FDR                         : 28
+#      FDR                         : 32
+#      FDS                         : 7
 # Clock Buffers                    : 2
 #      BUFG                        : 1
 #      BUFGP                       : 1
@@ -459,8 +486,8 @@ Device utilization summary:
 Selected Device : 3s100ecp132-4 
 
  Number of Slices:                      235  out of    960    24%  
- Number of Slice Flip Flops:            142  out of   1920     7%  
- Number of 4 input LUTs:                437  out of   1920    22%  
+ Number of Slice Flip Flops:            157  out of   1920     8%  
+ Number of 4 input LUTs:                432  out of   1920    22%  
  Number of IOs:                          23
  Number of bonded IOBs:                  23  out of     83    27%  
  Number of GCLKs:                         2  out of     24     8%  
@@ -486,7 +513,7 @@ Clock Information:
 -------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------+-------+
 Clock Signal                                                                                                             | Clock buffer(FF name)                                    | Load  |
 -------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------+-------+
-CLK                                                                                                                      | BUFGP                                                    | 46    |
+CLK                                                                                                                      | BUFGP                                                    | 61    |
 data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<7>1(data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<7>:O)| BUFG(*)(data_flow/timer_controller_Inst/counter_second_0)| 96    |
 -------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------+-------+
 (*) This 1 clock signal(s) are generated by combinatorial logic,
@@ -538,7 +565,7 @@ Speed Grade: -4
 
    Minimum period: 9.823ns (Maximum Frequency: 101.804MHz)
    Minimum input arrival time before clock: 5.310ns
-   Maximum output required time after clock: 15.674ns
+   Maximum output required time after clock: 4.283ns
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -548,7 +575,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'CLK'
   Clock period: 5.322ns (frequency: 187.901MHz)
-  Total number of paths / destination ports: 1192 / 74
+  Total number of paths / destination ports: 1228 / 96
 -------------------------------------------------------------------------
 Delay:               5.322ns (Levels of Logic = 9)
   Source:            data_flow/one_second_clock/counter_2 (FF)
@@ -663,55 +690,36 @@ Offset:              5.310ns (Levels of Logic = 4)
                                        (68.5% logic, 31.5% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<7>1'
-  Total number of paths / destination ports: 17142 / 7
+Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK'
+  Total number of paths / destination ports: 11 / 11
 -------------------------------------------------------------------------
-Offset:              15.674ns (Levels of Logic = 20)
-  Source:            data_flow/timer_controller_Inst/counter_hour_2 (FF)
-  Destination:       SEVEN_SEGMENTS_DISPLAY<3> (PAD)
-  Source Clock:      data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<7>1 rising
+Offset:              4.283ns (Levels of Logic = 1)
+  Source:            data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY_6 (FF)
+  Destination:       SEVEN_SEGMENTS_DISPLAY<6> (PAD)
+  Source Clock:      CLK rising
 
-  Data Path: data_flow/timer_controller_Inst/counter_hour_2 to SEVEN_SEGMENTS_DISPLAY<3>
+  Data Path: data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY_6 to SEVEN_SEGMENTS_DISPLAY<6>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCPE:C->Q            8   0.591   0.932  data_flow/timer_controller_Inst/counter_hour_2 (data_flow/timer_controller_Inst/counter_hour_2)
-     LUT1:I0->O            1   0.704   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<0>_rt (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<0>_rt)
-     MUXCY:S->O            1   0.464   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<0> (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<0>)
-     MUXCY:CI->O           1   0.059   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<1> (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<1>)
-     MUXCY:CI->O           1   0.059   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<2> (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<2>)
-     MUXCY:CI->O           1   0.059   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<3> (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<3>)
-     MUXCY:CI->O           1   0.059   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<4> (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<4>)
-     MUXCY:CI->O           1   0.059   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<5> (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<5>)
-     MUXCY:CI->O           1   0.059   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<6> (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<6>)
-     MUXCY:CI->O           1   0.059   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<7> (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<7>)
-     MUXCY:CI->O           1   0.059   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<8> (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<8>)
-     MUXCY:CI->O           1   0.059   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<9> (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<9>)
-     MUXCY:CI->O           9   0.459   0.995  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<10> (data_flow/h1_bin_signal<1>)
-     LUT4:I0->O            1   0.704   0.000  data_flow/timer_controller_Inst/h_out0_bin_signal<3>1 (data_flow/timer_controller_Inst/h_out0_bin_signal<3>)
-     MUXF5:I1->O           8   0.321   0.932  data_flow/timer_controller_Inst/h_out0_bin_signal<3>_f5 (data_flow/h0_bin_signal<3>)
-     LUT3:I0->O            1   0.704   0.455  data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY<0>1164_SW0_SW1 (N56)
-     LUT4:I2->O            1   0.704   0.424  data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY<0>1164_SW0 (N34)
-     LUT4:I3->O            1   0.704   0.424  data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY<0>1164 (data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY<0>1164)
-     LUT4:I3->O            2   0.704   0.526  data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY<0>11108 (data_flow/N7)
-     LUT4:I1->O            1   0.704   0.420  data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY<0>73 (SEVEN_SEGMENTS_DISPLAY_0_OBUF)
-     OBUF:I->O                 3.272          SEVEN_SEGMENTS_DISPLAY_0_OBUF (SEVEN_SEGMENTS_DISPLAY<0>)
+     FDS:C->Q              1   0.591   0.420  data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY_6 (data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY_6)
+     OBUF:I->O                 3.272          SEVEN_SEGMENTS_DISPLAY_6_OBUF (SEVEN_SEGMENTS_DISPLAY<6>)
     ----------------------------------------
-    Total                     15.674ns (10.566ns logic, 5.108ns route)
-                                       (67.4% logic, 32.6% route)
+    Total                      4.283ns (3.863ns logic, 0.420ns route)
+                                       (90.2% logic, 9.8% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 18.00 secs
-Total CPU time to Xst completion: 16.28 secs
+Total REAL time to Xst completion: 17.00 secs
+Total CPU time to Xst completion: 14.38 secs
  
 --> 
 
 
-Total memory usage is 524428 kilobytes
+Total memory usage is 622180 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   11 (   0 filtered)
+Number of warnings :    9 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

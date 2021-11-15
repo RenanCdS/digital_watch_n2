@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Sat Nov 13 22:17:48 2021
+// Written by: Map P.20131013 on Sun Nov 14 07:15:08 2021
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -22,6 +22,6 @@ COMP "ANODES<3>" LOCATE = SITE "K14" LEVEL 1;
 COMP "DATA<1>" LOCATE = SITE "L3" LEVEL 1;
 COMP "DATA<2>" LOCATE = SITE "K3" LEVEL 1;
 COMP "DATA<3>" LOCATE = SITE "B4" LEVEL 1;
-NET "CLK_UC_BUFGP/IBUFG" BEL "CLK_UC_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
+NET "CLK_BUFGP/IBUFG" BEL "CLK_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
 SCHEMATIC END;
 
