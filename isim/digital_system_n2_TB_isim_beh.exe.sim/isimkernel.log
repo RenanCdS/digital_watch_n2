@@ -1,0 +1,10 @@
+Command line:
+   digital_system_n2_TB_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  54038
+
+Sun Nov 14 06:30:12 2021
+
+
+ Elaboration Time: 0.09 sec
