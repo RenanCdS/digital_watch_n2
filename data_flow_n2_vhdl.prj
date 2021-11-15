@@ -1,7 +1,6 @@
 vhdl work "/home/ise/ISE_Projects/digital_watch_n2/two_bits_regs.vhd"
 vhdl work "/home/ise/ISE_Projects/digital_watch_n2/timer_controller.vhd"
 vhdl work "/home/ise/ISE_Projects/digital_watch_n2/regs.vhd"
-vhdl work "/home/ise/ISE_Projects/digital_watch_n2/display_changer.vhd"
 vhdl work "/home/ise/ISE_Projects/digital_watch_n2/conversor_bin_to_hex.vhd"
 vhdl work "/home/ise/ISE_Projects/digital_watch_n2/clk_division.vhd"
 vhdl work "/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd"

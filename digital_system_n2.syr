@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.07 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.07 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> 
 Reading design: digital_system_n2.prj
@@ -108,27 +108,29 @@ Slice Utilization Ratio Delta      : 5
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "/home/ise/ISE_Projects/digital_watch_n2/display_changer.vhd" in Library work.
-Entity <display_changer> compiled.
-Entity <display_changer> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity display_changer is up to date.
 Compiling vhdl file "/home/ise/ISE_Projects/digital_watch_n2/clk_division.vhd" in Library work.
 Architecture behavioral of Entity clk_division is up to date.
 Compiling vhdl file "/home/ise/ISE_Projects/digital_watch_n2/two_bits_regs.vhd" in Library work.
+WARNING:HDLParsers:3530 - Time stamp of file "/home/ise/ISE_Projects/digital_watch_n2/two_bits_regs.vhd" is newer than current system time.
 Architecture behavioral of Entity two_bits_regs is up to date.
 Compiling vhdl file "/home/ise/ISE_Projects/digital_watch_n2/regs.vhd" in Library work.
 Architecture behavioral of Entity four_bits_regs is up to date.
 Compiling vhdl file "/home/ise/ISE_Projects/digital_watch_n2/timer_controller.vhd" in Library work.
-Entity <timer_controller> compiled.
-Entity <timer_controller> (Architecture <behavioral>) compiled.
+WARNING:HDLParsers:3530 - Time stamp of file "/home/ise/ISE_Projects/digital_watch_n2/timer_controller.vhd" is newer than current system time.
+Architecture behavioral of Entity timer_controller is up to date.
 Compiling vhdl file "/home/ise/ISE_Projects/digital_watch_n2/conversor_bin_to_hex.vhd" in Library work.
 Architecture behavioral of Entity conversor_bin_to_hex is up to date.
 Compiling vhdl file "/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd" in Library work.
-Architecture behavioral of Entity data_flow_n2 is up to date.
+WARNING:HDLParsers:3530 - Time stamp of file "/home/ise/ISE_Projects/digital_watch_n2/data_flow_n2.vhd" is newer than current system time.
+Entity <data_flow_n2> compiled.
+Entity <data_flow_n2> (Architecture <behavioral>) compiled.
 Compiling vhdl file "/home/ise/ISE_Projects/digital_watch_n2/control_unit_n2.vhd" in Library work.
-Entity <control_unit_n2> compiled.
-Entity <control_unit_n2> (Architecture <behavioral>) compiled.
+WARNING:HDLParsers:3530 - Time stamp of file "/home/ise/ISE_Projects/digital_watch_n2/control_unit_n2.vhd" is newer than current system time.
+Architecture behavioral of Entity control_unit_n2 is up to date.
 Compiling vhdl file "/home/ise/ISE_Projects/digital_watch_n2/digital_system_n2.vhd" in Library work.
-Entity <digital_system_n2> compiled.
-Entity <digital_system_n2> (Architecture <behavioral>) compiled.
+WARNING:HDLParsers:3530 - Time stamp of file "/home/ise/ISE_Projects/digital_watch_n2/digital_system_n2.vhd" is newer than current system time.
+Architecture behavioral of Entity digital_system_n2 is up to date.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -182,7 +184,6 @@ Analyzing Entity <conversor_bin_to_hex> in library <work> (Architecture <behavio
 Entity <conversor_bin_to_hex> analyzed. Unit <conversor_bin_to_hex> generated.
 
 Analyzing Entity <control_unit_n2> in library <work> (Architecture <behavioral>).
-INFO:Xst:2679 - Register <RST_WATCH_OUT> in unit <control_unit_n2> has a constant value of 0 during circuit operation. The register is replaced by logic.
 Entity <control_unit_n2> analyzed. Unit <control_unit_n2> generated.
 
 
@@ -194,8 +195,22 @@ Performing bidirectional port resolution...
 
 Synthesizing Unit <control_unit_n2>.
     Related source file is "/home/ise/ISE_Projects/digital_watch_n2/control_unit_n2.vhd".
-    Using one-hot encoding for signal <current_state>.
-    Found 7-bit register for signal <current_state>.
+    Found finite state machine <FSM_0> for signal <current_state>.
+    -----------------------------------------------------------------------
+    | States             | 9                                              |
+    | Transitions        | 27                                             |
+    | Inputs             | 6                                              |
+    | Outputs            | 6                                              |
+    | Clock              | CLK_UC                    (rising_edge)        |
+    | Reset              | RST_UC                    (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | e0                                             |
+    | Power Up State     | e0                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Summary:
+	inferred   1 Finite State Machine(s).
 Unit <control_unit_n2> synthesized.
 
 
@@ -303,10 +318,9 @@ Macro Statistics
 # Counters                                             : 4
  28-bit up counter                                     : 1
  32-bit up counter                                     : 3
-# Registers                                            : 5
+# Registers                                            : 4
  2-bit register                                        : 1
  4-bit register                                        : 3
- 7-bit register                                        : 1
 # Comparators                                          : 14
  28-bit comparator greatequal                          : 1
  28-bit comparator less                                : 1
@@ -319,61 +333,27 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <7>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <8>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <9>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <10>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <11>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <12>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <13>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <14>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <15>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <16>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <17>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <18>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <19>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <20>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <21>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <22>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <23>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <24>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <25>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <26>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <27>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <28>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <29>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <30>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <31>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <8>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <9>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <10>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <11>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <12>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <13>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <14>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <15>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <16>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <17>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <18>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <19>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <20>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <21>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <22>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <23>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <24>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <25>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <26>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <27>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <28>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <29>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <30>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <31>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <6>. This FF/Latch will be trimmed during the optimization process.
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <control_unit/current_state/FSM> on signal <current_state[1:4]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ e0    | 0000
+ e1    | 0001
+ e2    | 0011
+ e3    | 0010
+ e4    | 0110
+ e5    | 0111
+ e6    | 0101
+ e7    | 1100
+ e8    | 0100
+-------------------
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
+# FSMs                                                 : 1
 # ROMs                                                 : 4
  16x7-bit ROM                                          : 4
 # Multipliers                                          : 4
@@ -386,8 +366,8 @@ Macro Statistics
 # Counters                                             : 4
  28-bit up counter                                     : 1
  32-bit up counter                                     : 3
-# Registers                                            : 21
- Flip-Flops                                            : 21
+# Registers                                            : 14
+ Flip-Flops                                            : 14
 # Comparators                                          : 14
  28-bit comparator greatequal                          : 1
  28-bit comparator less                                : 1
@@ -399,8 +379,6 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:2677 - Node <control_unit/current_state_0> of sequential type is unconnected in block <digital_system_n2>.
-WARNING:Xst:2677 - Node <control_unit/current_state_1> of sequential type is unconnected in block <digital_system_n2>.
 WARNING:Xst:2170 - Unit data_flow_n2 : the following signal(s) form a combinatorial loop: ANODES<0>.
 
 Optimizing unit <digital_system_n2> ...
@@ -408,60 +386,10 @@ Optimizing unit <digital_system_n2> ...
 Optimizing unit <timer_controller> ...
 
 Optimizing unit <data_flow_n2> ...
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_6> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_31> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_30> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_29> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_28> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_27> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_26> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_25> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_24> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_23> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_22> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_21> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_20> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_19> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_18> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_17> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_16> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_15> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_14> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_13> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_12> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_11> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_10> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_9> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_minute_8> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_31> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_30> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_29> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_28> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_27> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_26> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_25> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_24> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_23> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_22> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_21> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_20> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_19> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_18> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_17> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_16> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_15> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_14> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_13> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_12> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_11> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_10> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_9> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_8> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <data_flow/timer_controller_Inst/counter_hour_7> (without init value) has a constant value of 0 in block <digital_system_n2>. This FF/Latch will be trimmed during the optimization process.
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block digital_system_n2, actual ratio is 17.
+Found area constraint ratio of 100 (+ 5) on block digital_system_n2, actual ratio is 26.
 
 Final Macro Processing ...
 
@@ -469,8 +397,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 93
- Flip-Flops                                            : 93
+# Registers                                            : 142
+ Flip-Flops                                            : 142
 
 =========================================================================
 
@@ -499,22 +427,23 @@ Design Statistics
 # IOs                              : 23
 
 Cell Usage :
-# BELS                             : 484
+# BELS                             : 824
 #      GND                         : 1
-#      INV                         : 23
-#      LUT1                        : 41
-#      LUT2                        : 24
-#      LUT3                        : 58
-#      LUT3_D                      : 1
-#      LUT4                        : 79
-#      MUXCY                       : 184
-#      MUXF5                       : 5
+#      INV                         : 27
+#      LUT1                        : 104
+#      LUT2                        : 41
+#      LUT3                        : 91
+#      LUT3_D                      : 2
+#      LUT4                        : 171
+#      LUT4_L                      : 1
+#      MUXCY                       : 248
+#      MUXF5                       : 6
 #      VCC                         : 1
-#      XORCY                       : 67
-# FlipFlops/Latches                : 93
-#      FDC                         : 37
+#      XORCY                       : 131
+# FlipFlops/Latches                : 142
+#      FDC                         : 36
 #      FDCE                        : 14
-#      FDCPE                       : 14
+#      FDCPE                       : 64
 #      FDR                         : 28
 # Clock Buffers                    : 2
 #      BUFG                        : 1
@@ -529,9 +458,9 @@ Device utilization summary:
 
 Selected Device : 3s100ecp132-4 
 
- Number of Slices:                      151  out of    960    15%  
- Number of Slice Flip Flops:             93  out of   1920     4%  
- Number of 4 input LUTs:                226  out of   1920    11%  
+ Number of Slices:                      235  out of    960    24%  
+ Number of Slice Flip Flops:            142  out of   1920     7%  
+ Number of 4 input LUTs:                437  out of   1920    22%  
  Number of IOs:                          23
  Number of bonded IOBs:                  23  out of     83    27%  
  Number of GCLKs:                         2  out of     24     8%  
@@ -557,8 +486,8 @@ Clock Information:
 -------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------+-------+
 Clock Signal                                                                                                             | Clock buffer(FF name)                                    | Load  |
 -------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------+-------+
-CLK                                                                                                                      | BUFGP                                                    | 47    |
-data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<7>1(data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<7>:O)| BUFG(*)(data_flow/timer_controller_Inst/counter_second_0)| 46    |
+CLK                                                                                                                      | BUFGP                                                    | 46    |
+data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<7>1(data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<7>:O)| BUFG(*)(data_flow/timer_controller_Inst/counter_second_0)| 96    |
 -------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------+-------+
 (*) This 1 clock signal(s) are generated by combinatorial logic,
 and XST is not able to identify which are the primary clock signals.
@@ -566,49 +495,50 @@ Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated 
 
 Asynchronous Control Signals Information:
 ----------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------+-------+
-Control Signal                                                                                                                             | Buffer(FF name)                                       | Load  |
--------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------+-------+
-N1(XST_VCC:P)                                                                                                                              | NONE(data_flow/timer_controller_Inst/counter_second_0)| 32    |
-control_unit/current_state_6(control_unit/current_state_6:Q)                                                                               | NONE(data_flow/h_in0_regs/q_out_temp_0)               | 14    |
-RST_UC                                                                                                                                     | IBUF                                                  | 5     |
-data_flow/h_in0_regs/q_out_temp_0(data_flow/h_in0_regs/q_out_temp_0:Q)                                                                     | NONE(data_flow/timer_controller_Inst/counter_hour_0)  | 1     |
-data_flow/m_in0_regs/q_out_temp_0(data_flow/m_in0_regs/q_out_temp_0:Q)                                                                     | NONE(data_flow/timer_controller_Inst/counter_minute_0)| 1     |
-data_flow/timer_controller_Inst/Madd_counter_hour_addsub0000_lut<1>(data_flow/timer_controller_Inst/Madd_counter_hour_addsub0000_lut<1>1:O)| NONE(data_flow/timer_controller_Inst/counter_hour_1)  | 1     |
-data_flow/timer_controller_Inst/counter_hour_0__and0001(data_flow/timer_controller_Inst/counter_hour_0__and00011_INV_0:O)                  | NONE(data_flow/timer_controller_Inst/counter_hour_0)  | 1     |
-data_flow/timer_controller_Inst/counter_hour_1__and0001(data_flow/timer_controller_Inst/counter_hour_1__and00011:O)                        | NONE(data_flow/timer_controller_Inst/counter_hour_1)  | 1     |
-data_flow/timer_controller_Inst/counter_hour_2__and0001(data_flow/timer_controller_Inst/counter_hour_2__and00011:O)                        | NONE(data_flow/timer_controller_Inst/counter_hour_2)  | 1     |
-data_flow/timer_controller_Inst/counter_hour_2__and0002(data_flow/timer_controller_Inst/counter_hour_2__and00021:O)                        | NONE(data_flow/timer_controller_Inst/counter_hour_2)  | 1     |
-data_flow/timer_controller_Inst/counter_hour_3__and0001(data_flow/timer_controller_Inst/counter_hour_3__and00011:O)                        | NONE(data_flow/timer_controller_Inst/counter_hour_3)  | 1     |
-data_flow/timer_controller_Inst/counter_hour_3__and0002(data_flow/timer_controller_Inst/counter_hour_3__and00021:O)                        | NONE(data_flow/timer_controller_Inst/counter_hour_3)  | 1     |
-data_flow/timer_controller_Inst/counter_hour_4__and0001(data_flow/timer_controller_Inst/counter_hour_4__and00011:O)                        | NONE(data_flow/timer_controller_Inst/counter_hour_4)  | 1     |
-data_flow/timer_controller_Inst/counter_hour_4__and0002(data_flow/timer_controller_Inst/Madd_counter_hour_addsub0000_xor<4>1:O)            | NONE(data_flow/timer_controller_Inst/counter_hour_4)  | 1     |
-data_flow/timer_controller_Inst/counter_hour_5__and0001(data_flow/timer_controller_Inst/counter_hour_5__and00011:O)                        | NONE(data_flow/timer_controller_Inst/counter_hour_5)  | 1     |
-data_flow/timer_controller_Inst/counter_hour_5__and0002(data_flow/timer_controller_Inst/counter_hour_5__and00021:O)                        | NONE(data_flow/timer_controller_Inst/counter_hour_5)  | 1     |
-data_flow/timer_controller_Inst/counter_minute_0__and0001(data_flow/timer_controller_Inst/counter_minute_0__and00011_INV_0:O)              | NONE(data_flow/timer_controller_Inst/counter_minute_0)| 1     |
-data_flow/timer_controller_Inst/counter_minute_1__and0001(data_flow/timer_controller_Inst/counter_minute_1__and00011_INV_0:O)              | NONE(data_flow/timer_controller_Inst/counter_minute_1)| 1     |
-data_flow/timer_controller_Inst/counter_minute_1__and0002(data_flow/timer_controller_Inst/Madd_counter_minute_add0000_xor<1>:O)            | NONE(data_flow/timer_controller_Inst/counter_minute_1)| 1     |
-data_flow/timer_controller_Inst/counter_minute_2__and0001(data_flow/timer_controller_Inst/counter_minute_2__and00011_INV_0:O)              | NONE(data_flow/timer_controller_Inst/counter_minute_2)| 1     |
-data_flow/timer_controller_Inst/counter_minute_2__and0002(data_flow/timer_controller_Inst/Madd_counter_minute_add0000_xor<2>:O)            | NONE(data_flow/timer_controller_Inst/counter_minute_2)| 1     |
-data_flow/timer_controller_Inst/counter_minute_3__and0001(data_flow/timer_controller_Inst/counter_minute_3__and00011_INV_0:O)              | NONE(data_flow/timer_controller_Inst/counter_minute_3)| 1     |
-data_flow/timer_controller_Inst/counter_minute_3__and0002(data_flow/timer_controller_Inst/Madd_counter_minute_add0000_xor<3>:O)            | NONE(data_flow/timer_controller_Inst/counter_minute_3)| 1     |
-data_flow/timer_controller_Inst/counter_minute_4__and0001(data_flow/timer_controller_Inst/counter_minute_4__and00011_INV_0:O)              | NONE(data_flow/timer_controller_Inst/counter_minute_4)| 1     |
-data_flow/timer_controller_Inst/counter_minute_4__and0002(data_flow/timer_controller_Inst/Madd_counter_minute_add0000_xor<4>:O)            | NONE(data_flow/timer_controller_Inst/counter_minute_4)| 1     |
-data_flow/timer_controller_Inst/counter_minute_5__and0001(data_flow/timer_controller_Inst/counter_minute_5__and00011_INV_0:O)              | NONE(data_flow/timer_controller_Inst/counter_minute_5)| 1     |
-data_flow/timer_controller_Inst/counter_minute_5__and0002(data_flow/timer_controller_Inst/Madd_counter_minute_add0000_xor<5>:O)            | NONE(data_flow/timer_controller_Inst/counter_minute_5)| 1     |
-data_flow/timer_controller_Inst/counter_minute_6__and0001(data_flow/timer_controller_Inst/counter_minute_6__and00011_INV_0:O)              | NONE(data_flow/timer_controller_Inst/counter_minute_6)| 1     |
-data_flow/timer_controller_Inst/counter_minute_6__and0002(data_flow/timer_controller_Inst/Madd_counter_minute_add0000_xor<6>:O)            | NONE(data_flow/timer_controller_Inst/counter_minute_6)| 1     |
-data_flow/timer_controller_Inst/counter_minute_7__and0001(data_flow/timer_controller_Inst/counter_minute_7__and00011_INV_0:O)              | NONE(data_flow/timer_controller_Inst/counter_minute_7)| 1     |
-data_flow/timer_controller_Inst/counter_minute_7__and0002(data_flow/timer_controller_Inst/Madd_counter_minute_add0000_xor<7>:O)            | NONE(data_flow/timer_controller_Inst/counter_minute_7)| 1     |
--------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------+-------+
+-----------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------+-------+
+Control Signal                                                                                                         | Buffer(FF name)                                       | Load  |
+-----------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------+-------+
+data_flow/timer_controller_Inst/RST_N_inv(data_flow/timer_controller_Inst/RST_N_inv1:O)                                | NONE(data_flow/timer_controller_Inst/counter_hour_10) | 82    |
+N0(XST_GND:G)                                                                                                          | NONE(data_flow/timer_controller_Inst/counter_hour_10) | 50    |
+clear_uc_clear_df(control_unit/current_state_FSM_Out41:O)                                                              | NONE(data_flow/h_in0_regs/q_out_temp_0)               | 14    |
+RST_UC                                                                                                                 | IBUF                                                  | 4     |
+data_flow/timer_controller_Inst/counter_hour_0__and0001(data_flow/timer_controller_Inst/counter_hour_0__and00011:O)    | NONE(data_flow/timer_controller_Inst/counter_hour_0)  | 1     |
+data_flow/timer_controller_Inst/counter_hour_0__and0002(data_flow/timer_controller_Inst/counter_hour_0__and00021:O)    | NONE(data_flow/timer_controller_Inst/counter_hour_0)  | 1     |
+data_flow/timer_controller_Inst/counter_hour_1__and0001(data_flow/timer_controller_Inst/counter_hour_1__and00011:O)    | NONE(data_flow/timer_controller_Inst/counter_hour_1)  | 1     |
+data_flow/timer_controller_Inst/counter_hour_1__and0002(data_flow/timer_controller_Inst/counter_hour_1__and00021:O)    | NONE(data_flow/timer_controller_Inst/counter_hour_1)  | 1     |
+data_flow/timer_controller_Inst/counter_hour_2__and0001(data_flow/timer_controller_Inst/counter_hour_2__and00011:O)    | NONE(data_flow/timer_controller_Inst/counter_hour_2)  | 1     |
+data_flow/timer_controller_Inst/counter_hour_2__and0002(data_flow/timer_controller_Inst/counter_hour_2__and00021:O)    | NONE(data_flow/timer_controller_Inst/counter_hour_2)  | 1     |
+data_flow/timer_controller_Inst/counter_hour_3__and0001(data_flow/timer_controller_Inst/counter_hour_3__and00011:O)    | NONE(data_flow/timer_controller_Inst/counter_hour_3)  | 1     |
+data_flow/timer_controller_Inst/counter_hour_3__and0002(data_flow/timer_controller_Inst/counter_hour_3__and00021:O)    | NONE(data_flow/timer_controller_Inst/counter_hour_3)  | 1     |
+data_flow/timer_controller_Inst/counter_hour_4__and0001(data_flow/timer_controller_Inst/counter_hour_4__and00011:O)    | NONE(data_flow/timer_controller_Inst/counter_hour_4)  | 1     |
+data_flow/timer_controller_Inst/counter_hour_4__and0002(data_flow/timer_controller_Inst/counter_hour_4__and00021:O)    | NONE(data_flow/timer_controller_Inst/counter_hour_4)  | 1     |
+data_flow/timer_controller_Inst/counter_hour_5__and0001(data_flow/timer_controller_Inst/counter_hour_5__and00011:O)    | NONE(data_flow/timer_controller_Inst/counter_hour_5)  | 1     |
+data_flow/timer_controller_Inst/counter_hour_5__and0002(data_flow/timer_controller_Inst/counter_hour_5__and00021:O)    | NONE(data_flow/timer_controller_Inst/counter_hour_5)  | 1     |
+data_flow/timer_controller_Inst/counter_minute_0__and0001(data_flow/timer_controller_Inst/counter_minute_0__and00011:O)| NONE(data_flow/timer_controller_Inst/counter_minute_0)| 1     |
+data_flow/timer_controller_Inst/counter_minute_0__and0002(data_flow/timer_controller_Inst/counter_minute_0__and00021:O)| NONE(data_flow/timer_controller_Inst/counter_minute_0)| 1     |
+data_flow/timer_controller_Inst/counter_minute_1__and0001(data_flow/timer_controller_Inst/counter_minute_1__and00011:O)| NONE(data_flow/timer_controller_Inst/counter_minute_1)| 1     |
+data_flow/timer_controller_Inst/counter_minute_1__and0002(data_flow/timer_controller_Inst/counter_minute_1__and00021:O)| NONE(data_flow/timer_controller_Inst/counter_minute_1)| 1     |
+data_flow/timer_controller_Inst/counter_minute_2__and0001(data_flow/timer_controller_Inst/counter_minute_2__and00011:O)| NONE(data_flow/timer_controller_Inst/counter_minute_2)| 1     |
+data_flow/timer_controller_Inst/counter_minute_2__and0002(data_flow/timer_controller_Inst/counter_minute_2__and00021:O)| NONE(data_flow/timer_controller_Inst/counter_minute_2)| 1     |
+data_flow/timer_controller_Inst/counter_minute_3__and0001(data_flow/timer_controller_Inst/counter_minute_3__and00011:O)| NONE(data_flow/timer_controller_Inst/counter_minute_3)| 1     |
+data_flow/timer_controller_Inst/counter_minute_3__and0002(data_flow/timer_controller_Inst/counter_minute_3__and00021:O)| NONE(data_flow/timer_controller_Inst/counter_minute_3)| 1     |
+data_flow/timer_controller_Inst/counter_minute_4__and0001(data_flow/timer_controller_Inst/counter_minute_4__and00011:O)| NONE(data_flow/timer_controller_Inst/counter_minute_4)| 1     |
+data_flow/timer_controller_Inst/counter_minute_4__and0002(data_flow/timer_controller_Inst/counter_minute_4__and00021:O)| NONE(data_flow/timer_controller_Inst/counter_minute_4)| 1     |
+data_flow/timer_controller_Inst/counter_minute_5__and0001(data_flow/timer_controller_Inst/counter_minute_5__and00011:O)| NONE(data_flow/timer_controller_Inst/counter_minute_5)| 1     |
+data_flow/timer_controller_Inst/counter_minute_5__and0002(data_flow/timer_controller_Inst/counter_minute_5__and00021:O)| NONE(data_flow/timer_controller_Inst/counter_minute_5)| 1     |
+data_flow/timer_controller_Inst/counter_minute_6__and0001(data_flow/timer_controller_Inst/counter_minute_6__and00011:O)| NONE(data_flow/timer_controller_Inst/counter_minute_6)| 1     |
+data_flow/timer_controller_Inst/counter_minute_6__and0002(data_flow/timer_controller_Inst/counter_minute_6__and00021:O)| NONE(data_flow/timer_controller_Inst/counter_minute_6)| 1     |
+data_flow/timer_controller_Inst/counter_minute_7__and0001(data_flow/timer_controller_Inst/counter_minute_7__and00011:O)| NONE(data_flow/timer_controller_Inst/counter_minute_7)| 1     |
+data_flow/timer_controller_Inst/counter_minute_7__and0002(data_flow/timer_controller_Inst/counter_minute_7__and00021:O)| NONE(data_flow/timer_controller_Inst/counter_minute_7)| 1     |
+-----------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 9.810ns (Maximum Frequency: 101.935MHz)
-   Minimum input arrival time before clock: 4.262ns
-   Maximum output required time after clock: 15.648ns
+   Minimum period: 9.823ns (Maximum Frequency: 101.804MHz)
+   Minimum input arrival time before clock: 5.310ns
+   Maximum output required time after clock: 15.674ns
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -616,11 +546,41 @@ Timing Detail:
 All values displayed in nanoseconds (ns)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<7>1'
-  Clock period: 9.810ns (frequency: 101.935MHz)
-  Total number of paths / destination ports: 19522 / 60
+Timing constraint: Default period analysis for Clock 'CLK'
+  Clock period: 5.322ns (frequency: 187.901MHz)
+  Total number of paths / destination ports: 1192 / 74
 -------------------------------------------------------------------------
-Delay:               9.810ns (Levels of Logic = 44)
+Delay:               5.322ns (Levels of Logic = 9)
+  Source:            data_flow/one_second_clock/counter_2 (FF)
+  Destination:       data_flow/one_second_clock/counter_27 (FF)
+  Source Clock:      CLK rising
+  Destination Clock: CLK rising
+
+  Data Path: data_flow/one_second_clock/counter_2 to data_flow/one_second_clock/counter_27
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              3   0.591   0.706  data_flow/one_second_clock/counter_2 (data_flow/one_second_clock/counter_2)
+     LUT1:I0->O            1   0.704   0.000  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<0>_0_rt (data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<0>_0_rt)
+     MUXCY:S->O            1   0.464   0.000  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<0>_0 (data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<0>1)
+     MUXCY:CI->O           1   0.059   0.000  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<1>_0 (data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<1>1)
+     MUXCY:CI->O           1   0.059   0.000  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<2>_0 (data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<2>1)
+     MUXCY:CI->O           1   0.059   0.000  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<3>_0 (data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<3>1)
+     MUXCY:CI->O           1   0.059   0.000  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<4>_0 (data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<4>1)
+     MUXCY:CI->O           1   0.059   0.000  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<5>_0 (data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<5>1)
+     MUXCY:CI->O           1   0.059   0.000  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<6>_0 (data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<6>1)
+     MUXCY:CI->O          28   0.331   1.261  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<7>_0 (data_flow/one_second_clock/counter_cmp_ge0000)
+     FDR:R                     0.911          data_flow/one_second_clock/counter_0
+    ----------------------------------------
+    Total                      5.322ns (3.355ns logic, 1.967ns route)
+                                       (63.0% logic, 37.0% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<7>1'
+  Clock period: 9.823ns (frequency: 101.804MHz)
+  Total number of paths / destination ports: 28208 / 160
+-------------------------------------------------------------------------
+Delay:               9.823ns (Levels of Logic = 44)
   Source:            data_flow/timer_controller_Inst/counter_second_0 (FF)
   Destination:       data_flow/timer_controller_Inst/counter_second_31 (FF)
   Source Clock:      data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<7>1 rising
@@ -641,7 +601,7 @@ Delay:               9.810ns (Levels of Logic = 44)
      MUXCY:CI->O           1   0.059   0.000  data_flow/timer_controller_Inst/Mcompar_counter_minute_cmp_ge0000_cy<6> (data_flow/timer_controller_Inst/Mcompar_counter_minute_cmp_ge0000_cy<6>)
      MUXCY:CI->O           1   0.059   0.000  data_flow/timer_controller_Inst/Mcompar_counter_minute_cmp_ge0000_cy<7> (data_flow/timer_controller_Inst/Mcompar_counter_minute_cmp_ge0000_cy<7>)
      MUXCY:CI->O           1   0.459   0.499  data_flow/timer_controller_Inst/Mcompar_counter_minute_cmp_ge0000_cy<8> (data_flow/timer_controller_Inst/Mcompar_counter_minute_cmp_ge0000_cy<8>)
-     LUT3:I1->O           54   0.704   1.304  data_flow/timer_controller_Inst/Mcompar_counter_minute_cmp_ge0000_cy<10>1 (data_flow/timer_controller_Inst/counter_minute_0__or0000)
+     LUT3:I1->O           94   0.704   1.317  data_flow/timer_controller_Inst/Mcompar_counter_minute_cmp_ge0000_cy<10>1 (data_flow/timer_controller_Inst/counter_minute_0__or0000)
      LUT3:I2->O            1   0.704   0.000  data_flow/timer_controller_Inst/Mcount_counter_second_lut<0> (data_flow/timer_controller_Inst/Mcount_counter_second_lut<0>)
      MUXCY:S->O            1   0.464   0.000  data_flow/timer_controller_Inst/Mcount_counter_second_cy<0> (data_flow/timer_controller_Inst/Mcount_counter_second_cy<0>)
      MUXCY:CI->O           1   0.059   0.000  data_flow/timer_controller_Inst/Mcount_counter_second_cy<1> (data_flow/timer_controller_Inst/Mcount_counter_second_cy<1>)
@@ -677,65 +637,36 @@ Delay:               9.810ns (Levels of Logic = 44)
      XORCY:CI->O           1   0.804   0.000  data_flow/timer_controller_Inst/Mcount_counter_second_xor<31> (data_flow/timer_controller_Inst/Mcount_counter_second31)
      FDC:D                     0.308          data_flow/timer_controller_Inst/counter_second_31
     ----------------------------------------
-    Total                      9.810ns (7.385ns logic, 2.425ns route)
-                                       (75.3% logic, 24.7% route)
-
-=========================================================================
-Timing constraint: Default period analysis for Clock 'CLK'
-  Clock period: 5.322ns (frequency: 187.901MHz)
-  Total number of paths / destination ports: 1148 / 70
--------------------------------------------------------------------------
-Delay:               5.322ns (Levels of Logic = 9)
-  Source:            data_flow/one_second_clock/counter_2 (FF)
-  Destination:       data_flow/one_second_clock/counter_27 (FF)
-  Source Clock:      CLK rising
-  Destination Clock: CLK rising
-
-  Data Path: data_flow/one_second_clock/counter_2 to data_flow/one_second_clock/counter_27
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FDR:C->Q              3   0.591   0.706  data_flow/one_second_clock/counter_2 (data_flow/one_second_clock/counter_2)
-     LUT1:I0->O            1   0.704   0.000  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<0>_0_rt (data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<0>_0_rt)
-     MUXCY:S->O            1   0.464   0.000  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<0>_0 (data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<0>1)
-     MUXCY:CI->O           1   0.059   0.000  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<1>_0 (data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<1>1)
-     MUXCY:CI->O           1   0.059   0.000  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<2>_0 (data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<2>1)
-     MUXCY:CI->O           1   0.059   0.000  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<3>_0 (data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<3>1)
-     MUXCY:CI->O           1   0.059   0.000  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<4>_0 (data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<4>1)
-     MUXCY:CI->O           1   0.059   0.000  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<5>_0 (data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<5>1)
-     MUXCY:CI->O           1   0.059   0.000  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<6>_0 (data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<6>1)
-     MUXCY:CI->O          28   0.331   1.261  data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<7>_0 (data_flow/one_second_clock/counter_cmp_ge0000)
-     FDR:R                     0.911          data_flow/one_second_clock/counter_0
-    ----------------------------------------
-    Total                      5.322ns (3.355ns logic, 1.967ns route)
-                                       (63.0% logic, 37.0% route)
+    Total                      9.823ns (7.385ns logic, 2.438ns route)
+                                       (75.2% logic, 24.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
-  Total number of paths / destination ports: 34 / 19
+  Total number of paths / destination ports: 37 / 18
 -------------------------------------------------------------------------
-Offset:              4.262ns (Levels of Logic = 3)
-  Source:            BTN_H0 (PAD)
-  Destination:       control_unit/current_state_5 (FF)
+Offset:              5.310ns (Levels of Logic = 4)
+  Source:            BTN_H1 (PAD)
+  Destination:       control_unit/current_state_FSM_FFd2 (FF)
   Destination Clock: CLK rising
 
-  Data Path: BTN_H0 to control_unit/current_state_5
+  Data Path: BTN_H1 to control_unit/current_state_FSM_FFd2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             3   1.218   0.706  BTN_H0_IBUF (BTN_H0_IBUF)
-     LUT3:I0->O            2   0.704   0.622  control_unit/next_state<6>11 (N01)
-     LUT3:I0->O            1   0.704   0.000  control_unit/next_state<5>1 (control_unit/next_state<5>)
-     FDC:D                     0.308          control_unit/current_state_5
+     IBUF:I->O             4   1.218   0.762  BTN_H1_IBUF (BTN_H1_IBUF)
+     LUT3:I0->O            1   0.704   0.455  control_unit/current_state_FSM_FFd2-In20 (control_unit/current_state_FSM_FFd2-In20)
+     LUT4:I2->O            1   0.704   0.455  control_unit/current_state_FSM_FFd2-In24 (control_unit/current_state_FSM_FFd2-In24)
+     LUT3:I2->O            1   0.704   0.000  control_unit/current_state_FSM_FFd2-In31 (control_unit/current_state_FSM_FFd2-In)
+     FDC:D                     0.308          control_unit/current_state_FSM_FFd2
     ----------------------------------------
-    Total                      4.262ns (2.934ns logic, 1.328ns route)
-                                       (68.8% logic, 31.2% route)
+    Total                      5.310ns (3.638ns logic, 1.672ns route)
+                                       (68.5% logic, 31.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<7>1'
-  Total number of paths / destination ports: 3427 / 7
+  Total number of paths / destination ports: 17142 / 7
 -------------------------------------------------------------------------
-Offset:              15.648ns (Levels of Logic = 20)
+Offset:              15.674ns (Levels of Logic = 20)
   Source:            data_flow/timer_controller_Inst/counter_hour_2 (FF)
   Destination:       SEVEN_SEGMENTS_DISPLAY<3> (PAD)
   Source Clock:      data_flow/one_second_clock/Mcompar_CLK_1s_cmp_lt0000_cy<7>1 rising
@@ -744,7 +675,7 @@ Offset:              15.648ns (Levels of Logic = 20)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCPE:C->Q            6   0.591   0.844  data_flow/timer_controller_Inst/counter_hour_2 (data_flow/timer_controller_Inst/counter_hour_2)
+     FDCPE:C->Q            8   0.591   0.932  data_flow/timer_controller_Inst/counter_hour_2 (data_flow/timer_controller_Inst/counter_hour_2)
      LUT1:I0->O            1   0.704   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<0>_rt (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<0>_rt)
      MUXCY:S->O            1   0.464   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<0> (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<0>)
      MUXCY:CI->O           1   0.059   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<1> (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<1>)
@@ -756,31 +687,31 @@ Offset:              15.648ns (Levels of Logic = 20)
      MUXCY:CI->O           1   0.059   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<7> (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<7>)
      MUXCY:CI->O           1   0.059   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<8> (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<8>)
      MUXCY:CI->O           1   0.059   0.000  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<9> (data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<9>)
-     MUXCY:CI->O          10   0.459   1.057  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<10> (data_flow/h1_bin_signal<1>)
+     MUXCY:CI->O           9   0.459   0.995  data_flow/timer_controller_Inst/Mcompar_h_out1_bin_signal_cmp_ge0000_cy<10> (data_flow/h1_bin_signal<1>)
      LUT4:I0->O            1   0.704   0.000  data_flow/timer_controller_Inst/h_out0_bin_signal<3>1 (data_flow/timer_controller_Inst/h_out0_bin_signal<3>)
      MUXF5:I1->O           8   0.321   0.932  data_flow/timer_controller_Inst/h_out0_bin_signal<3>_f5 (data_flow/h0_bin_signal<3>)
-     LUT3:I0->O            1   0.704   0.455  data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY<0>1164_SW0_SW1 (N45)
-     LUT4:I2->O            1   0.704   0.424  data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY<0>1164_SW0 (N23)
+     LUT3:I0->O            1   0.704   0.455  data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY<0>1164_SW0_SW1 (N56)
+     LUT4:I2->O            1   0.704   0.424  data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY<0>1164_SW0 (N34)
      LUT4:I3->O            1   0.704   0.424  data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY<0>1164 (data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY<0>1164)
      LUT4:I3->O            2   0.704   0.526  data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY<0>11108 (data_flow/N7)
-     LUT3:I1->O            1   0.704   0.420  data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY<0>72 (SEVEN_SEGMENTS_DISPLAY_0_OBUF)
+     LUT4:I1->O            1   0.704   0.420  data_flow/display_changer_inst/SEVEN_SEGMENTS_DISPLAY<0>73 (SEVEN_SEGMENTS_DISPLAY_0_OBUF)
      OBUF:I->O                 3.272          SEVEN_SEGMENTS_DISPLAY_0_OBUF (SEVEN_SEGMENTS_DISPLAY<0>)
     ----------------------------------------
-    Total                     15.648ns (10.566ns logic, 5.082ns route)
-                                       (67.5% logic, 32.5% route)
+    Total                     15.674ns (10.566ns logic, 5.108ns route)
+                                       (67.4% logic, 32.6% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 15.00 secs
-Total CPU time to Xst completion: 12.85 secs
+Total REAL time to Xst completion: 18.00 secs
+Total CPU time to Xst completion: 16.28 secs
  
 --> 
 
 
-Total memory usage is 523400 kilobytes
+Total memory usage is 524428 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  108 (   0 filtered)
-Number of infos    :    1 (   0 filtered)
+Number of warnings :   11 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
 
